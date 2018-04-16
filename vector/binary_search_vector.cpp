@@ -4,7 +4,7 @@
 using namespace std;
 
 template <typename T>
-size_t binary_search_vector(const T& key, typename vector<T>::const_iterator data, size_t N)
+bool binary_search_vector(const T& key, typename vector<T>::const_iterator data, size_t N)
 {
   size_t low = 0;
   size_t high = N;
@@ -16,9 +16,9 @@ size_t binary_search_vector(const T& key, typename vector<T>::const_iterator dat
     else if (*(data + mid) < key)	// 大则去后半部分继续查找.
       low = mid + 1;
     else
-      return mid;
+      return true;
   }
-  return N;
+  return false;
 }
 
 int main()
