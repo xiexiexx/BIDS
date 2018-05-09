@@ -25,8 +25,8 @@ int main()
     // 删除S中的前k - 1个元素并暂存到V中.
     for (int i = 0; i < k - 1; ++i)
     {
-      V.push_back(*iter);
-      iter = S.erase(S.begin());
+      V.push_back(*S.begin());
+      S.erase(S.begin());
     }
     cout << *iter << endl;
     // 将前k - 1个元素放回S中.

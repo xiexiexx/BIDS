@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 
@@ -15,9 +16,17 @@ int main()
   sv.insert(iter_sv, key);
   // 删除元素(重复元素的最后一个). 思考: 如何删除第一个?
   key = 6;
-  iter_sv = upper_bound(sv.begin(), sv.end(), key);
-  --iter_sv;
-  sv.erase(iter_sv);
+  // 如果存在则删除.
+  if (binary_search(sv.begin(), sv.end(), key))
+  {
+    iter_sv = upper_bound(sv.begin(), sv.end(), key);
+    --iter_sv;
+    sv.erase(iter_sv);
+  }
+  // 查找重复key所在的区间range, 区间为[range.first, range.second).
+  auto range = equal_range(sv.begin(), sv.end(), key);
+  // 删除整个range区间的元素.
+  sv.erase(range.first, range.second);
   // 打印.
   for (const auto& x : sv)
     cout << x << " ";
@@ -31,8 +40,12 @@ int main()
   // 删除元素(重复元素的第一个). 思考: 如何删除最后一个?
   key = 6;
   auto iter_usv = find(usv.begin(), usv.end(), key);
-  *iter_usv = usv.back();
-  usv.pop_back();
+  // 如果存在则删除.
+  if (iter_usv != usv.end())
+  {
+    *iter_usv = usv.back();
+    usv.pop_back();
+  }
   // 打印.
   for (auto& x : usv)
     cout << x << " ";
