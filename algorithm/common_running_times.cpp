@@ -1,7 +1,7 @@
 #include <iostream>   // 输入输出流.
 #include <ctime>      // 时间.
 #include <algorithm>  // 算法库.
-#include <vector>			// 向量.
+#include <vector>     // 向量.
 
 using namespace std;  // 使用名字空间std.
 
@@ -28,13 +28,13 @@ int main()
 
   // 线对时间
   start = clock();
-	sort(v.begin(), v.end());
+  sort(v.begin(), v.end());
   end = clock();
   cout << "运行时间(s): " << time(start, end) << endl;
 
-	// 对数时间
+  // 对数时间
   start = clock();
-	binary_search(v.begin(), v.end(), 1);
+  binary_search(v.begin(), v.end(), 1);
   end = clock();
   cout << "运行时间(s): " << time(start, end) << endl;
 
