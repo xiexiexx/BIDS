@@ -11,7 +11,7 @@ int main()
   // 为简便起见这里使用size_t型, 实际上i应该用vector<int>::size_type型.
   // 向量的下标用法与数组相同, 但要注意应保证向量中实有元素个数就是size().
   for (size_t i = 0; i < A.size(); ++i)
-    A[i] = i;
+    A[i] = static_cast<int>(i);
   // 使用迭代器iter对向量A中每个元素赋值1.
   // 迭代器可从向量的开始到结束, 类似指针.
   // 要注意begin()和end()的用法: begin()位置是首元素, 而end()位置没有元素存在.
