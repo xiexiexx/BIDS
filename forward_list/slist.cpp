@@ -26,7 +26,7 @@ int main()
     cout << p->data << endl;
 
   vector<snode> V = {{}, {1, NULL}, {2, NULL}, {3, NULL}};
-  p = &V[0];
+  header = p = &V[0];
   for (size_t i = 1; i < V.size(); ++i)
   {
     p->next = &V[i];
