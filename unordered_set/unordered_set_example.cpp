@@ -24,7 +24,8 @@ int main()
   for (auto iter = S.begin(); iter != S.end(); ++iter)
     cout << *iter << ' ';
   cout << endl;
-  for (auto iter = S.begin(); iter != S.end(); ++iter)
+  auto iter = S.begin();
+  while (iter != S.end())
     if (*iter % 2 == 0)
       iter = S.erase(iter);
     else
