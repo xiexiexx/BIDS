@@ -11,7 +11,7 @@ inline double time(clock_t start, clock_t end)
 
 int main()
 {
-  const size_t n = 100000000;
+  const size_t n = 1000000000;
   forward_list<int> FL;
   clock_t start = clock();
   auto iter = FL.before_begin();

@@ -21,7 +21,7 @@ struct xnode {
 
 int main()
 {
-  const size_t n = 1000000;
+  const size_t n = 100000000;
   const int m = 16;
   vector<xnode<m>*> V;
   clock_t start = clock();
