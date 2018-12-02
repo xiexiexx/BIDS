@@ -23,7 +23,8 @@ void UNION(vector<PR>& DS, size_t x, size_t y)
   }
 }
 
-size_t FIND(vector<PR>& DS, size_t x)
+// 使用栈完成.
+size_t FIND_S(vector<PR>& DS, size_t x)
 {
   stack<size_t> S;
   while (DS[x].parent != x)
@@ -37,6 +38,21 @@ size_t FIND(vector<PR>& DS, size_t x)
     S.pop();
   }
   return x;
+}
+
+// 使用两次迭代完成.
+size_t FIND(vector<PR>& DS, size_t x)
+{
+  size_t root = x;
+  while (DS[root].parent != root)
+    root = DS[root].parent;
+  while (x != root)
+  {
+    size_t parent = DS[x].parent;
+    DS[x].parent = root;
+    x = parent;
+  }
+  return root;
 }
 
 void print(const vector<PR>& DS)
