@@ -6,6 +6,7 @@ using namespace std;
 template <typename T>
 void print_heap(const vector<T>& H)
 {
+  // 不考虑哨兵位置H[0].
   for (size_t i = 1; i < H.size(); ++i)
     cout << H[i] << ' ';
   cout << endl;
