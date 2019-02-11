@@ -2,23 +2,8 @@
 #include <bitset>
 #include <vector>
 #include <ctime>
+
 using namespace std;
-
-/*
-template <size_t N>
-inline void CL(bitset<N>& S, size_t W)
-{
-  W %= N;
-  S = S << W | S >> (N - W);
-}
-
-template <size_t N>
-inline void CR(bitset<N>& S, size_t W)
-{
-  W %= N;
-  S = S >> W | S << (N - W);
-}
-*/
 
 int main()
 {
