@@ -71,4 +71,5 @@ int main()
   }
   for (size_t i = 0; i < P.size(); ++i)
     cout << (char)('A' + i) << "->" << data[i].code << endl;
+  return 0;
 }
