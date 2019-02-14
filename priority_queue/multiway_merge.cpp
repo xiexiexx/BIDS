@@ -13,7 +13,7 @@ void merge(const vector<vector<T>>& V, vector<T>& S)
   S.clear();
   S.reserve(L);
   using range = pair<decltype(V[0].begin()), decltype(V[0].end())>;
-  auto cmp = [](range a, range b) { return *(a.first) > *(b.first); };
+  auto cmp = [](range a, range b) { return *(b.first) < *(a.first); };
   priority_queue<range, vector<range>, decltype(cmp)> PQ(cmp);
   for (const auto& X : V)
     if (X.begin() != X.end())

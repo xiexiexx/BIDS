@@ -16,9 +16,11 @@ int main()
 {
   auto cmp = [](event a, event b) { return a.time > b.time; };
   priority_queue<event, vector<event>, decltype(cmp)> PQ(cmp);
-  PQ.push({"B1", 60, 0});
-  PQ.push({"B2", 80, 0});
-  PQ.push({"B3", 100, 0});
+  const size_t N = 30;  // 车辆总数.
+  const size_t D = 20;  // 发车间隔.
+  for (size_t i = 0; i < N; ++i)
+    PQ.push({"B" + to_string(i + 1), i * D, 0});
+  // 相邻站点之间的最短到达时间.
   vector<size_t> gap = {5, 9, 8, 6, 7, 6, 4, 7};
   default_random_engine generator;
   uniform_int_distribution<size_t> distribution(0, 5);
