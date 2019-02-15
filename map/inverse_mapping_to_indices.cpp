@@ -20,12 +20,12 @@ int main()
     if (IM.find(x.first) == IM.end())
     {
       M.push_back(x.first);
-      IM.insert({x.first, M.size() - 1});
+      IM[x.first] = M.size() - 1;
     }
     if (IM.find(x.second) == IM.end())
     {
       M.push_back(x.first);
-      IM.insert({x.second, M.size() - 1});
+      IM[x.second] = M.size() - 1;
     }
   }
   for (const auto& x : G)

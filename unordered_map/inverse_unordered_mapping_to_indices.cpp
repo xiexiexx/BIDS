@@ -21,12 +21,12 @@ int main()
     if (IM.count(x.first) == 0)
     {
       M.push_back(x.first);
-      IM.insert({x.first, M.size() - 1});
+      IM[x.first] = M.size() - 1;
     }
     if (IM.count(x.second) == 0)
     {
       M.push_back(x.first);
-      IM.insert({x.second, M.size() - 1});
+      IM[x.second] = M.size() - 1;
     }
     cout << IM.bucket_count() << " Bucket(s), Load Factor: "
          << IM.load_factor() << endl;
