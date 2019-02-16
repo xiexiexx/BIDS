@@ -28,5 +28,10 @@ int main()
     S.insert(i);
   end = clock();
   cout << "运行时间(s): " << time(start, end) << endl;
+  size_t M = 0;
+  for (size_t i = 0; i < S.bucket_count(); ++i)
+    if (S.bucket_size(i) > M)
+      M = S.bucket_size(i);
+  cout << "The maximal bucket has " << M << " element(s)." << endl;
   return 0;
 }
