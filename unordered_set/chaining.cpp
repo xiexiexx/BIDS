@@ -26,23 +26,24 @@ int main()
   vector<list<int>> LH(N);
   for (const auto& x : K)
   {
-    size_t position = ((size_t) x) % N;
-    SH[position].insert(x);
-    if (find(VH[position].begin(), VH[position].end(), x) == VH[position].end())
-      VH[position].push_back(x);
-    if (find(LH[position].begin(), LH[position].end(), x) == LH[position].end())
-      LH[position].push_front(x);
+    size_t pos = ((size_t) x) % N;
+    SH[pos].insert(x);
+    if (find(VH[pos].begin(), VH[pos].end(), x) == VH[pos].end())
+      VH[pos].push_back(x);
+    if (find(LH[pos].begin(), LH[pos].end(), x) == LH[pos].end())
+      LH[pos].push_front(x);
   }
   print_all(SH);
   print_all(VH);
   print_all(LH);
   for (const auto& x : K)
   {
-    size_t position = ((size_t) x) % N;
-    SH[position].erase(x);
-    auto iter = find(VH[position].begin(), VH[position].end(), x);
-    if (iter != VH[position].end())
-      VH[position].erase(iter);
-    LH[position].remove(x);
+    size_t pos = ((size_t) x) % N;
+    SH[pos].erase(x);
+    auto iter = find(VH[pos].begin(), VH[pos].end(), x);
+    if (iter != VH[pos].end())
+      VH[pos].erase(iter);
+    LH[pos].remove(x);
   }
+  return 0;
 }
