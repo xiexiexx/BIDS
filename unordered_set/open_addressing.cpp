@@ -15,7 +15,7 @@ inline size_t probe(int k, size_t i, size_t m)
   return (((size_t) k) + i ) % m;
 }
 
-void make_empty(vector<pnode>& H)
+void fill_blanks(vector<pnode>& H)
 {
   for (auto& x : H)
   {
@@ -70,7 +70,7 @@ void print_all(const vector<pnode>& H)
 void rehashing(vector<pnode>& H)
 {
   vector<pnode> W(2 * H.size());
-  make_empty(W);
+  fill_blanks(W);
   for (const auto& x : H)
     if (!x.empty && !x.gone)
       insert(x.key, W);
@@ -81,7 +81,7 @@ int main()
 {
   vector<int> V = {-7, 4, 3, -6, 5, 4, 22, 71, 42, -96, 81, 12, 105};
   vector<pnode> H(2 * V.size());
-  make_empty(H);
+  fill_blanks(H);
   for (const auto& x : V)
     insert(x, H);
   size_t pos = search(42, H);
