@@ -15,6 +15,15 @@ inline size_t probe(int k, size_t i, size_t m)
   return (((size_t) k) + i ) % m;
 }
 
+void make_empty(vector<pnode>& H)
+{
+  for (auto& x : H)
+  {
+    x.empty = true;
+    x.gone = false;
+  }
+}
+
 void insert(int k, vector<pnode>& H)
 {
   for (size_t i = 0; i < H.size(); ++i)
@@ -50,14 +59,18 @@ size_t search(int k, const vector<pnode>& H)
   return H.size();
 }
 
+void print_all(const vector<pnode>& H)
+{
+  for (const auto& x : H)
+    if (!x.empty && !x.gone)
+      cout << x.key << endl;
+  cout << "==================" << endl;
+}
+
 void rehashing(vector<pnode>& H)
 {
   vector<pnode> W(2 * H.size());
-  for (auto& x : W)
-  {
-    x.empty = true;
-    x.gone = false;
-  }
+  make_empty(W);
   for (const auto& x : H)
     if (!x.empty && !x.gone)
       insert(x.key, W);
@@ -68,20 +81,16 @@ int main()
 {
   vector<int> V = {-7, 4, 3, -6, 5, 4, 22, 71, 42, -96, 81, 12, 105};
   vector<pnode> H(2 * V.size());
-  for (auto& x : H)
-  {
-    x.empty = true;
-    x.gone = false;
-  }
+  make_empty(H);
   for (const auto& x : V)
     insert(x, H);
   size_t pos = search(42, H);
   if (pos != H.size())
     H[pos].gone = true;
+  print_all(H);
   insert(42, H);
   rehashing(H);
-  for (const auto& x : H)
-    if (!x.empty && !x.gone)
-      cout << x.key << endl;
+  insert(7, H);
+  print_all(H);
   return 0;
 }
