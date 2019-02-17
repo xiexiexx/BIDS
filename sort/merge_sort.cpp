@@ -4,8 +4,9 @@
 
 using namespace std;
 
-// 注意不能写T类型在参数表里写typename vector<T>::iterator,
-// 那样得配合一个T类型或者vector<T>类型的参数.
+// 注意不能设定T类型然后在参数表里全用typename vector<T>::iterator,
+// 那样得在参数表里加入一个T类型或者vector<T>类型的参数,
+// 否则编译器无法仅凭vector<T>::iterator回溯获知T的类型.
 template <typename iterator>
 void merge_sort(iterator L, iterator R, iterator AUX)
 {
