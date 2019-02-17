@@ -15,7 +15,7 @@ void merge_sort(iterator L, iterator R, iterator AUX)
     auto M = L + (R - L) / 2;
     merge_sort(L, M, AUX);
     merge_sort(M, R, AUX);
-    // 如果使用inplace_merge会略慢.
+    // 如果使用inplace_merge(L, M, R);会略慢.
     merge(L, M, M, R, AUX);
     copy(AUX, AUX + (R - L), L);
   }
