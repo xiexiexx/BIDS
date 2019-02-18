@@ -11,7 +11,7 @@ void quicksort(iterator L, iterator R)
   if (L < R)
   {
     auto pivot = *L;
-    auto M = partition(L, R, [pivot](const auto& x) { return x < pivot; });
+    iterator M = partition(L, R, [pivot](const auto& x) { return x < pivot; });
     quicksort(L, M);
     quicksort(M + 1, R);
   }
