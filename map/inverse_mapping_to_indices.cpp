@@ -24,7 +24,7 @@ int main()
     }
     if (IM.find(x.second) == IM.end())
     {
-      M.push_back(x.first);
+      M.push_back(x.second);
       IM[x.second] = M.size() - 1;
     }
   }

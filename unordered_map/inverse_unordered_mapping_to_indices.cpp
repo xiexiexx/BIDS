@@ -25,7 +25,7 @@ int main()
     }
     if (IM.count(x.second) == 0)
     {
-      M.push_back(x.first);
+      M.push_back(x.second);
       IM[x.second] = M.size() - 1;
     }
     cout << IM.bucket_count() << " Bucket(s), Load Factor: "

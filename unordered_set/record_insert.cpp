@@ -7,7 +7,7 @@ using namespace std;
 
 struct record {
   string name;
-  int age;
+  size_t age;
   size_t code;
   string location;
 };

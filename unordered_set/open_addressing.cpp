@@ -24,6 +24,7 @@ void fill_blanks(vector<pnode>& H)
   }
 }
 
+// 插入元素之前得先查找保证该元素不在集合中.
 void insert(int k, vector<pnode>& H)
 {
   for (size_t i = 0; i < H.size(); ++i)
@@ -41,8 +42,6 @@ void insert(int k, vector<pnode>& H)
       H[pos].key = k;
       break;
     }
-    else if (k == H[pos].key)
-      break;
   }
 }
 
