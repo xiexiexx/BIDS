@@ -5,13 +5,15 @@
 using namespace std;
 
 // 最好使用C++17编译本程序.
+
 template <typename iterator>
 void quicksort(iterator L, iterator R)
 {
-  if (L < R)
+  if (L + 1 < R)
   {
-    auto pivot = *L;
-    iterator M = partition(L, R, [pivot](const auto& x) { return x < pivot; });
+    auto P = *L;
+    iterator M = --partition(L + 1, R, [P](const auto& x) { return x < P; });
+    swap(*L, *M);
     quicksort(L, M);
     quicksort(M + 1, R);
   }
