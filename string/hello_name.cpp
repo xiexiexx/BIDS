@@ -11,5 +11,9 @@ int main()
   cout << name.size() << endl;
   name = name + name;
   cout << name << endl;
+  string a = "C";
+  string b = "++";
+  auto c = a + b;
+  cout << c << endl;
   return 0;
 }
