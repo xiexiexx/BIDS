@@ -21,7 +21,7 @@ bool validator(const string& brackets)
         S.push(brackets[i]);
         break;
       case ']':
-        if (S.empty() || S.top() != ']')
+        if (S.empty() || S.top() != '[')
           return false;
         S.pop();
         break;
