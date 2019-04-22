@@ -38,7 +38,6 @@ bool binary_search_iterator(const T& key, iterator L, iterator R)
       return true;
   }
   return false;
-
 }
 
 int main()
