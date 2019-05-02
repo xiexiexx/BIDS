@@ -3,11 +3,11 @@
 
 using namespace std;
 
-size_t iterative_Collatz(size_t n)
+uint64_t iterative_Collatz(size_t n)
 {
   if (n < 1)
     return 0;
-  size_t L = 1;
+  uint64_t L = 1;
   while (n != 1)
   {
     n = (n % 2 == 0) ? n / 2 : 3 * n + 1;
@@ -17,10 +17,10 @@ size_t iterative_Collatz(size_t n)
 }
 
 // 调用本函数要求v的长度至少是2, 并且已初始化. 另外要求n >= 1.
-size_t memoized_Collatz(vector<size_t>& v, size_t n)
+uint64_t memoized_Collatz(vector<uint64_t>& v, size_t n)
 {
   // 如果n不在向量v的下标范围之内, 先转换到合理范围之内并计算偏移D.
-  size_t D = 0;
+  uint64_t D = 0;
   while (n >= v.size()) // 注意此处如果v.size() <= 1则会出错.
   {
     n = (n % 2 == 0) ? n / 2 : 3 * n + 1;
@@ -37,7 +37,7 @@ int main()
 {
   // 利用备忘录保存已算出的值, 适合多次求解.
   const size_t m = 10000;
-  vector<size_t> v(m, 0);
+  vector<uint64_t> v(m, 0);
   v[1] = 1;
   // 测试迭代和备忘录计算结果是否一致, 测试范围为[1, max].
   size_t max = 100000;
