@@ -37,10 +37,19 @@ template <typename T, typename iterator>
 iterator linear_search_iterator(const T& key, iterator L, iterator R)
 {
   while (L != R)
-    if (*L++ == key)
+  {
+    if (*L == key)
       return L;
+    ++L;
+  }
   return L;
 }
+
+/*
+  不要过度追求简洁而出错, 从而返回不正确的迭代器位置.
+  if (*L++ == key)
+    return L;
+*/
 
 int main()
 {
