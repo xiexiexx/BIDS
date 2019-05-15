@@ -36,6 +36,13 @@ size_t linear_search_vector(const T& key, const vector<T>& data)
 template <typename T, typename iterator>
 iterator linear_search_iterator(const T& key, iterator L, iterator R)
 {
+  while (L != R && *L != key)
+    ++L;
+  return L;
+}
+
+// 原始写法有点冗长.
+/*
   while (L != R)
   {
     if (*L == key)
@@ -43,10 +50,9 @@ iterator linear_search_iterator(const T& key, iterator L, iterator R)
     ++L;
   }
   return L;
-}
-
+*/
+// 另外, 不要过度追求简洁而出错, 从而返回不正确的迭代器位置.
 /*
-  不要过度追求简洁而出错, 从而返回不正确的迭代器位置.
   if (*L++ == key)
     return L;
 */
@@ -65,5 +71,7 @@ int main()
   auto iter = linear_search_iterator(key, V.begin(), V.end());
   if (iter == V.end())
     cout << "Not Found!" << endl;
+  else
+    cout << *iter << endl;
   return 0;
 }
