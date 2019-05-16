@@ -29,10 +29,11 @@ int main()
       S.erase(S.begin());
     }
     cout << *iter << endl;
-    // 将前k - 1个元素放回S中.
+    // 将前k - 1个元素放回S中, 也可对V使用基于范围的for循环.
+    // 最简单的方式是直接使用:
+    // S.insert(V.begin(), V.end());
     for (size_t i = 0; i < V.size(); ++i)
       S.insert(V[i]);
-    // 或者直接使用: S.insert(V.begin(), V.end());
   }
   return 0;
 }
