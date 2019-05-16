@@ -5,6 +5,14 @@
 
 using namespace std;
 
+template <typename T>
+void print_all(const T& S)
+{
+  for (const auto& x : S)
+    cout << x << ' ';
+  cout << endl;
+}
+
 int main()
 {
   // 差集.
@@ -15,30 +23,27 @@ int main()
   for (auto iter = A.begin(); iter != A.end(); ++iter)
     if (B.find(*iter) == B.end())
       C.push_back(*iter);
-  for (const auto& x : C)
-    cout << x << " ";
-  cout << endl;
+  print_all(C);
 
   // 转存.
-  set<int> D = {3, 5, 1, 7, 2, 8, 0};
-  set<int> E;
+  set<string> D = {"English", "Ability", "Algorithm", "Faith", "Data"};
+  set<string> E;
   while (!D.empty())
   {
-    if (*D.begin() % 2 == 0)
+    if ((*D.begin()).size() % 2 == 0)
       E.insert(*D.begin());
     D.erase(D.begin());
   }
-  for (const auto& x : E)
-    cout << x << " ";
-  cout << endl;
+  print_all(E);
+  // 思考: 如果D是vector<string>型, 如何高效去除不合要求的元素?
 
   // 动态变化.
-  set<string> F = {"English", "Ability", "Algorithm", "Faith"};
+  set<int> F = {3, 5, 1, 7, 2, 8, 0};
   while (F.size() > 1)
   {
-    string first = *F.begin();
+    int first = *F.begin();
     F.erase(F.begin());
-    string second = *F.begin();
+    int second = *F.begin();
     F.erase(F.begin());
     F.insert(first + second);
   }
