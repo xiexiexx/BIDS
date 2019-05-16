@@ -28,7 +28,7 @@ int main()
       V.push_back(*S.begin());
       S.erase(S.begin());
     }
-    cout << *iter << endl;
+    cout << *S.begin() << endl;
     // 将前k - 1个元素放回S中, 也可对V使用基于范围的for循环.
     // 最简单的方式是直接使用:
     // S.insert(V.begin(), V.end());
