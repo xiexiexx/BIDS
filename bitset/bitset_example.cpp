@@ -26,6 +26,7 @@ int main()
   cout << A.count() << endl;
   A.set(pos, false);
   cout << A.count() << endl;
+  cout << (A[pos] == true) << endl;
   A.flip(pos);
   cout << A.count() << endl;
   A.flip();
