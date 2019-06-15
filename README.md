@@ -1,4 +1,5 @@
 #### "极简数据结构"系列视频
+
 课程地址：
 
 https://study.163.com/course/introduction/1209171880.htm?share=2&shareId=480000001892574
@@ -23,3 +24,4 @@ A Brief Introduction to Data Structures
 
 ---
 
+课程目前有完整的C++代码，目前正在更新Python 3代码，欢迎来PR!
