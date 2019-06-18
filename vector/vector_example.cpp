@@ -23,7 +23,7 @@ int main()
   vector<int> B(5, 3);
   // 在向量B末尾加入100个2.
   B.resize(B.size() + 100, 2);
-  // 在向量V的尾部加入3.
+  // 在向量B的尾部加入4.
   B.push_back(4);
   // 迭代器的另一种用法
   auto iter = B.begin();
