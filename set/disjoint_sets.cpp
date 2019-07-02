@@ -11,7 +11,7 @@ struct PR {
 void UNION(vector<PR>& DS, size_t x, size_t y)
 {
   if (x == y)
-    return ;
+    return;
   if (DS[x].rank < DS[y].rank)
     DS[x].parent = y;
   else if (DS[y].rank < DS[x].rank)
@@ -57,9 +57,13 @@ size_t FIND(vector<PR>& DS, size_t x)
 
 void print(const vector<PR>& DS)
 {
+  cout << "parent: ";
   for (auto const& e : DS)
-    cout << '(' << e.parent << ", " << e.rank << ')' << ' ';
-  cout << endl;
+    cout << e.parent << ", ";
+  cout << endl << "  rank: ";
+  for (auto const& e : DS)
+    cout << e.rank << ", ";
+  cout << endl << endl;
 }
 
 int main()
