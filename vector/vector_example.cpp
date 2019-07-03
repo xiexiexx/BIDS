@@ -32,11 +32,11 @@ int main()
   // 若向量B不为空，则持续输出其尾部元素并删除之.
   while(!B.empty())
   {
-    cout << B.back() << endl; // 输出向量V的末尾元素
-    B.pop_back();             // 删除向量V的末尾元素
+    cout << B.back() << endl; // 输出向量B的末尾元素
+    B.pop_back();             // 删除向量B的末尾元素
   }
 
-  // 接收未知长度的自然数输入序列, 以负数作为输入终止.
+  // 接收未知长度的自然数输入序列, 以负数作为输入终止. C初始为空向量.
   vector<int> C;
   int data;
   // 基于push_back操作的速度非常快.
@@ -44,6 +44,9 @@ int main()
     C.push_back(data);
   for (const auto& x : C)
     cout << x << endl;
+
+  // 向量的初始化列表.
+  vector<int> D = {4, 2, 1, 5, 3};
 
   return 0;
 }
