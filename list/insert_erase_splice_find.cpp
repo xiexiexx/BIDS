@@ -18,8 +18,8 @@ int main()
       iter = L.erase(iter);
     else
       ++iter;
-  list<int> X = {-5, -4, -3};
-  L.splice(L.begin(), X, ++X.begin(), X.end());
+  list<int> R = {-5, -4, -3};
+  L.splice(L.begin(), R, ++R.begin(), R.end());
   for (const auto& x : L)
     cout << x << endl;
   iter = find(L.begin(), L.end(), 0);
