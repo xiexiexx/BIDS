@@ -9,11 +9,12 @@ int main()
   size_t C = 10;    // 容量取10.
   size_t N = C + 1; // 真实buffer长度为N.
   buffer.resize(N);
-  size_t front = N / 2; // 初值任选buffer中的一个有效位置,
-  size_t rear = N / 2;  // 这里都取N / 2.
+  // front和rear的初值任选buffer中的一个有效位置, 这里都取N / 2.
+  size_t front = N / 2;
+  size_t rear = N / 2;
   int x = 0;
   // 当buffer不满, 持续放入0, 1, ... , C - 1.
-  while (rear + 1 < N ? rear + 1 != front : 0 != front)
+  while (rear + 1 < N ? front != rear + 1 : front != 0)
   {
     buffer[rear] = x++;
     // 下面的操作比rear = (rear + 1) % N更快.
