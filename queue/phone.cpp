@@ -16,9 +16,8 @@ int main()
   vector<queue<string>> Q(B);
   // d从L - 1到0, 注意用法.
   size_t d = L;
-  while (d > 0)
+  while (d-- > 0)
   {
-    --d;
     // 根据第d位的数字处理字符串.
     for (const auto& x : phone_numbers)
       Q[x[d] - '0'].push(x);
