@@ -29,7 +29,7 @@ int main()
   auto iter = B.begin();
   for (size_t i = 0; i < B.size(); ++i)
     *(iter + i) *= 2;
-  // 若向量B不为空，则持续输出其尾部元素并删除之.
+  // 若向量B不为空, 则持续输出其尾部元素并删除之.
   while(!B.empty())
   {
     cout << B.back() << endl; // 输出向量B的末尾元素
