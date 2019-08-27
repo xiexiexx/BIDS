@@ -4,20 +4,17 @@
 using namespace std;
 
 // 各种状态常量:
-const int matched = 1;
-const int not_matched = 0;
-const int illegal = -1;
-const int start = -2;
+enum status {not_matched = -1, matched = -2, illegal = -3, in = -4};
 
-int generalized_validator(const string& brackets, int status[])
+int generalized_validator(const string& brackets, int value[])
 {
-  stack <char> S;
+  stack<char> S;
   for (size_t i = 0; i < brackets.size(); ++i)
-    if (status[(int)brackets[i]] == illegal)      // 非法符号直接退出.
+    if (value[(int)brackets[i]] == illegal)                   // 非法符号直接退出.
       return illegal;
-    else if (status[(int)brackets[i]] == start)   // 左括号应该进栈.
+    else if (value[(int)brackets[i]] == in)                   // 左括号应该进栈.
       S.push(brackets[i]);
-    else if (S.empty() || S.top() != status[(int)brackets[i]])  // 无法弹栈.
+    else if (S.empty() || S.top() != value[(int)brackets[i]]) // 无法弹栈.
       return not_matched;
     else
       S.pop();
@@ -26,19 +23,19 @@ int generalized_validator(const string& brackets, int status[])
 
 int main()
 {
-  const int N = 256;
-  int status[N];
-  for (size_t i = 0; i < N; ++i)
-    status[i] = illegal;
-  status[(int)'('] = start;
-  status[(int)')'] = '(';
-  status[(int)'{'] = start;
-  status[(int)'}'] = '{';
-  status[(int)'['] = start;
-  status[(int)']'] = '[';
+  const int n = 256;
+  int value[n];
+  for (size_t i = 0; i < n; ++i)
+    value[i] = illegal;
+  value[(int)'('] = in;
+  value[(int)')'] = '(';
+  value[(int)'{'] = in;
+  value[(int)'}'] = '{';
+  value[(int)'['] = in;
+  value[(int)']'] = '[';
   string brackets;
   cin >> brackets;
-  int result = generalized_validator(brackets, status);
+  int result = generalized_validator(brackets, value);
   if (result == matched)
     cout << "匹配" << endl;
   else if (result == not_matched)
