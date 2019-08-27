@@ -13,7 +13,7 @@ const int d = 4;      // 可行方向总数.
 void find_next(status& current, status& next)
 {
   // 以direction取值0, 1, 2, 3标记东南西北.
-  pair<int, int> delta [d] = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
+  pair<int, int> delta[d] = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
   next.x = current.x + delta[current.direction].first;
   next.y = current.y + delta[current.direction].second;
 }
@@ -22,8 +22,8 @@ int main()
 {
   const int M = 5;
   const int N = 7;
-  char unvisited = '0'; // 未访问过的标记.
-  char visited = 'V';   // 访问过的标记.
+  const char unvisited = '0'; // 未访问过的标记.
+  const char visited = 'V';   // 访问过的标记.
   // 迷宫字符数组, 周围一圈全是墙(以'*'标记).
   char maze[M][N] = {
       {'*', '*', '*', '*', '*', '*', '*'},
@@ -35,7 +35,7 @@ int main()
   // 起点与终点的状态.
   status source = {1, 1, 0};
   status destination = {3, 5, 0};
-  vector<status> path;                      // 搜索时保留路径所用的向量.
+  vector<status> path;                      // 搜索时保留路径所用的向量, 可视为栈.
   path.reserve(M * N);                      // 提前预留容量.
   path.push_back(source);                   // 初始点设为入口点.
   while (!path.empty())
@@ -60,4 +60,3 @@ int main()
     cout << path[i].x << ' ' << path[i].y << endl;
   return 0;
 }
-
