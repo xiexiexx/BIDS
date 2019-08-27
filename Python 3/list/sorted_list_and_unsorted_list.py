@@ -37,7 +37,7 @@ USV = [9, 6, 1, 3, 8, 6]
 key = 0
 USV.append(key)
 
-# 删除重复元素的最后一个. 思考: 如何删除第一个?
+# 删除重复元素的最后一个.
 key = 6
 # 逆向遍历, 如果存在则删除.
 i = len(USV) - 1
@@ -47,4 +47,14 @@ while i > 0:
         USV.pop()
         break
     i -= 1
+print_all(USV)
+
+# 删除重复元素的第一个.
+try:
+    i = USV.index(key)
+except:
+    pass
+else:
+    USV[i] = USV[-1]
+    USV.pop()
 print_all(USV)
