@@ -10,7 +10,7 @@ struct point {
 };
 
 struct status {
-  point p;
+  point pt;
   size_t level;
 };
 
@@ -43,10 +43,10 @@ int main()
     for (size_t i = 0; i < d; ++i)
     {
       status current = Q.front();
-      point neighbor = {current.p.x + delta[i].x, current.p.y + delta[i].y};
+      point neighbor = {current.pt.x + delta[i].x, current.pt.y + delta[i].y};
       if (maze[neighbor.x][neighbor.y] == unvisited)
       {
-        parent[neighbor.x][neighbor.y] = current.p;
+        parent[neighbor.x][neighbor.y] = current.pt;
         if (neighbor.x == source.x && neighbor.y == source.y)
         {
           // 提前预留空间, 当然也可以不用保存到P中, 直接基于parent数组打印.
