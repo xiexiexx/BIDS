@@ -5,7 +5,7 @@ using namespace std;
 
 bool validator(const string& brackets)
 {
-  stack<char> S;
+  stack <char> S;
   for (size_t i = 0; i < brackets.size(); ++i)
     switch (brackets[i])
     {
