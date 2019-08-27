@@ -3,8 +3,10 @@
 #include <stack>
 using namespace std;
 
-// 各种状态常量:
-enum status {not_matched = -1, matched = -2, illegal = -3, in = -4};
+// 4种状态常量以及对应提示语, 注意使用text时下标要加上偏移d.
+const int d = 4;
+enum status {not_matched = -4, matched = -3, illegal = -2, in = -1};
+string text[d] = {"不匹配", "匹配", "存在非法字符", ""};
 
 int generalized_validator(const string& brackets, int value[])
 {
@@ -35,12 +37,6 @@ int main()
   value[(int)']'] = '[';
   string brackets;
   cin >> brackets;
-  int result = generalized_validator(brackets, value);
-  if (result == matched)
-    cout << "匹配" << endl;
-  else if (result == not_matched)
-    cout << "不匹配" << endl;
-  else
-    cout << "存在非法字符" << endl;
+  cout << text[d + generalized_validator(brackets, value)] << endl;
   return 0;
 }
