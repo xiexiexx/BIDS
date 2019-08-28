@@ -30,7 +30,7 @@ int main()
   };
   const int d = 4;      // 可行方向总数.
   // 以下标取值0, 1, 2, 3标记东南西北与当前位置的偏移量.
-  point delta[d] = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
+  const point delta[d] = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
   // 起点与终点的坐标.
   point source = {1, 1};
   point destination = {3, 5};
@@ -40,28 +40,28 @@ int main()
   Q.push({destination, 0});                 // 初始点设为出口点并指定初始层次.
   while (!Q.empty())
   {
-    for (size_t i = 0; i < d; ++i)
+    for (int direction = 0; direction < d; ++direction)
     {
-      status current = Q.front();
-      point neighbor = {current.pt.x + delta[i].x, current.pt.y + delta[i].y};
+      point neighbor = {Q.front().pt.x + delta[direction].x,
+                        Q.front().pt.y + delta[direction].y};
       if (maze[neighbor.x][neighbor.y] == unvisited)
       {
-        parent[neighbor.x][neighbor.y] = current.pt;
+        parent[neighbor.x][neighbor.y] = Q.front().pt;
         if (neighbor.x == source.x && neighbor.y == source.y)
         {
           // 提前预留空间, 当然也可以不用保存到P中, 直接基于parent数组打印.
-          P.reserve(current.level + 2);
+          P.reserve(Q.front().level + 2);
           P.push_back(source);
           while (P.back().x != destination.x || P.back().y != destination.y)
             P.push_back(parent[P.back().x][P.back().y]);
-          for (size_t i = 0; i < P.size(); ++i)
-            cout << P[i].x << ' ' << P[i].y << endl;
+          for (const auto& c : P)
+            cout << c.x << ' ' << c.y << endl;
           // 如果使用break语句只能跳出当前for循环, 还要设置标记变量跳出外层while循环,
           // 不如直接返回结束整个程序.
           return 0;
         }
         maze[neighbor.x][neighbor.y] = visited;
-        Q.push({neighbor, current.level + 1});
+        Q.push({neighbor, Q.front().level + 1});
       }
     }
     Q.pop();
