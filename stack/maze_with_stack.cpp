@@ -13,41 +13,34 @@ struct status {
   int direction;  // 以direction取值0, 1, 2, 3标记东南西北.
 };
 
-const int d = 4;      // 可行方向总数.
-// 以下标取值0, 1, 2, 3标记东南西北与当前位置的偏移量.
-point delta[d] = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
-
-void find_next(point& current, int direction, point& next)
-{
-  next.x = current.x + delta[direction].x;
-  next.y = current.y + delta[direction].y;
-}
-
 int main()
 {
-  const int M = 5;
-  const int N = 7;
+  const int m = 5;
+  const int n = 7;
   const char unvisited = '0'; // 未访问过的标记.
   const char visited = 'V';   // 访问过的标记.
   // 迷宫字符数组, 周围一圈全是墙(以'*'标记).
-  char maze[M][N] = {
+  char maze[m][n] = {
       {'*', '*', '*', '*', '*', '*', '*'},
       {'*', '0', '*', '0', '0', '0', '*'},
       {'*', '0', '*', '0', '*', '0', '*'},
       {'*', '0', '0', '0', '*', '0', '*'},
       {'*', '*', '*', '*', '*', '*', '*'}
   };
-  // 起点与终点的状态.
+  const int d = 4;      // 可行方向总数.
+  // 以下标取值0, 1, 2, 3标记东南西北与当前位置的偏移量.
+  const point delta[d] = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
+  // 起点与终点的坐标.
   point source = {1, 1};
   point destination = {3, 5};
   vector<status> P;                         // 搜索时保留路径所用的向量, 可视为栈.
-  P.reserve(M * N);                         // 提前预留容量.
+  P.reserve(m * n);                         // 提前预留容量.
   P.push_back({source, 0});                 // 初始点设为入口点, 并设定初始方向.
   while (!P.empty())
     if (P.back().direction < d)
     {
-      point next;
-      find_next(P.back().pt, P.back().direction, next);
+      point next = {P.back().pt.x + delta[P.back().direction].x,
+                    P.back().pt.y + delta[P.back().direction].y};
       ++P.back().direction;
       if (maze[next.x][next.y] == unvisited)
       {
@@ -60,7 +53,7 @@ int main()
     }
     else
       P.pop_back();
-  for (size_t i = 0; i < P.size(); ++i)
-    cout << P[i].pt.x << ' ' << P[i].pt.y << endl;
+  for (const auto& c : P)
+    cout << c.pt.x << ' ' << c.pt.y << endl;
   return 0;
 }
