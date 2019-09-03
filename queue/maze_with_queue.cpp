@@ -38,6 +38,7 @@ int main()
   queue<status> Q;                          // 搜索时所用队列.
   vector<point> P;                          // 保存最终路径.
   Q.push({destination, 0});                 // 初始点设为出口点并指定初始层次.
+  maze[destination.x][destination.y] = visited;
   while (!Q.empty())
   {
     for (int direction = 0; direction < d; ++direction)
