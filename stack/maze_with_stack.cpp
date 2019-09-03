@@ -36,6 +36,7 @@ int main()
   vector<status> P;                         // 搜索时保留路径所用的向量, 可视为栈.
   P.reserve(m * n);                         // 提前预留容量.
   P.push_back({source, 0});                 // 初始点设为入口点, 并设定初始方向.
+  maze[source.x][source.y] = visited;
   while (!P.empty())
     if (P.back().direction < d)
     {
