@@ -3,14 +3,16 @@
 #include <queue>
 using namespace std;
 
+template <typename T>
 struct tnode {
-  size_t data;
-  tnode* left;
-  tnode* right;
-  tnode* parent;
+  T data;
+  tnode<T>* left;
+  tnode<T>* right;
+  tnode<T>* parent;
 };
 
-void pre_order(tnode* p)
+template <typename iterator>
+void pre_order(iterator p)
 {
   if (p != NULL)
   {
@@ -20,7 +22,8 @@ void pre_order(tnode* p)
   }
 }
 
-void in_order(tnode* p)
+template <typename iterator>
+void in_order(iterator p)
 {
   if (p != NULL)
   {
@@ -30,7 +33,8 @@ void in_order(tnode* p)
   }
 }
 
-void post_order(tnode* p)
+template <typename iterator>
+void post_order(iterator p)
 {
   if (p != NULL)
   {
@@ -40,14 +44,15 @@ void post_order(tnode* p)
   }
 }
 
-void level_order(tnode* p)
+template <typename iterator>
+void level_order(iterator p)
 {
-  queue<tnode*> Q;
+  queue<iterator> Q;
   if (p != NULL)
     Q.push(p);
   while (!Q.empty())
   {
-    tnode* f = Q.front();
+    iterator f = Q.front();
     cout << f->data << ' ';
     if (f->left != NULL)
       Q.push(f->left);
@@ -57,18 +62,19 @@ void level_order(tnode* p)
   }
 }
 
-const double alpha = 0.3;
+double alpha;
 
-tnode* tree_generation(tnode* start, size_t n)
+template <typename iterator>
+iterator tree_generation(iterator start, size_t n)
 {
   if (n < 1)
     return NULL;
   size_t pivot = (n - 1) * alpha;
   size_t L = pivot;
   size_t R = n - 1 - pivot;
-  tnode* current = start + pivot;
-  tnode* left_root = tree_generation(start, L);
-  tnode* right_root = tree_generation(start + pivot + 1, R);
+  iterator current = start + pivot;
+  iterator left_root = tree_generation(start, L);
+  iterator right_root = tree_generation(start + pivot + 1, R);
   current->left = left_root;
   current->right = right_root;
   if (left_root != NULL)
@@ -78,50 +84,52 @@ tnode* tree_generation(tnode* start, size_t n)
   return current;
 }
 
-void left_most(tnode*& p)
+template <typename iterator>
+iterator left_most(iterator p)
 {
   while (p->left != NULL)
     p = p->left;
+  return p;
 }
 
-void right_most(tnode*& p)
+template <typename iterator>
+iterator right_most(iterator p)
 {
   while (p->right != NULL)
     p = p->right;
+  return p;
 }
 
-void next(tnode*& p)
+template <typename iterator>
+iterator next_position(iterator p)
 {
   if (p->right != NULL)
+    return left_most(p->right);
+  iterator last = p;
+  while (p != NULL)
   {
-    p = p->right;
-    left_most(p);
+    if (last == p->left)
+      return p;
+    last = p;
+    p = p->parent;
   }
-  else
-    while (p != NULL)
-    {
-      tnode* prev = p;
-      p = p->parent;
-      if (p != NULL & prev == p->left)
-        break;
-    }
+  return p;
 }
 
-void prev(tnode*& p)
+template <typename iterator>
+iterator prev_position(iterator p)
 {
   if (p->left != NULL)
+    return right_most(p->left);
+  iterator last = p;
+  while (p != NULL)
   {
-    p = p->left;
-    right_most(p);
+    if (last == p->right)
+      return p;
+    last = p;
+    p = p->parent;
   }
-  else
-    while (p != NULL)
-    {
-      tnode* next = p;
-      p = p->parent;
-      if (p != NULL & next == p->right)
-        break;
-    }
+  return p;
 }
 
 int main()
@@ -131,10 +139,12 @@ int main()
   if (n < 1)
     return 0;
 
-  vector<tnode> tree(n);
+  vector<tnode<size_t>> tree(n);
   for (size_t i = 0; i < tree.size(); ++i)
     tree[i].data = i;
-  tnode* root = tree_generation(&tree[0], tree.size());
+  alpha = 0.3;
+  auto root = tree_generation(&tree[0], tree.size());
+  root->parent = NULL;
 
   pre_order(root);
   cout << endl;
@@ -145,14 +155,10 @@ int main()
   level_order(root);
   cout << endl;
 
-  tnode* min = root;
-  left_most(min);
-  tnode* max = root;
-  right_most(max);
-  for (tnode* p = min; p != NULL; next(p))
+  for (auto p = left_most(root); p != NULL; p = next_position(p))
     cout << p->data << ' ';
   cout << endl;
-  for (tnode* p = max; p != NULL; prev(p))
+  for (auto p = right_most(root); p != NULL; p = prev_position(p))
     cout << p->data << ' ';
   cout << endl;
 
