@@ -70,18 +70,16 @@ iterator tree_generation(iterator start, size_t n)
   if (n < 1)
     return NULL;
   size_t pivot = (n - 1) * alpha;
-  size_t L = pivot;
-  size_t R = n - 1 - pivot;
-  iterator current = start + pivot;
-  iterator left_root = tree_generation(start, L);
-  iterator right_root = tree_generation(start + pivot + 1, R);
-  current->left = left_root;
-  current->right = right_root;
-  if (left_root != NULL)
-    left_root->parent = current;
-  if (right_root != NULL)
-    right_root->parent = current;
-  return current;
+  iterator root = start + pivot;
+  iterator left_subtree = tree_generation(start, pivot);
+  iterator right_subtree = tree_generation(start + pivot + 1, n - 1 - pivot);
+  root->left = left_subtree;
+  root->right = right_subtree;
+  if (left_subtree != NULL)
+    left_subtree->parent = root;
+  if (right_subtree != NULL)
+    right_subtree->parent = root;
+  return root;
 }
 
 template <typename iterator>
