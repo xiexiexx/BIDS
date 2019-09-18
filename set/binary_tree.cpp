@@ -69,10 +69,10 @@ iterator tree_generation(iterator start, size_t n)
 {
   if (n < 1)
     return NULL;
-  size_t pivot = (n - 1) * alpha;
-  iterator root = start + pivot;
-  iterator left_subtree = tree_generation(start, pivot);
-  iterator right_subtree = tree_generation(start + pivot + 1, n - 1 - pivot);
+  size_t c = (n - 1) * alpha;
+  iterator root = start + c;
+  iterator left_subtree = tree_generation(start, c);
+  iterator right_subtree = tree_generation(start + c + 1, n - 1 - c);
   root->left = left_subtree;
   root->right = right_subtree;
   if (left_subtree != NULL)
