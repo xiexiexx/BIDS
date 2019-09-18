@@ -8,7 +8,7 @@ struct PR {
   size_t rank;
 };
 
-void UNION(vector<PR>& DS, size_t x, size_t y)
+void U(vector<PR>& DS, size_t x, size_t y)
 {
   if (x == y)
     return;
@@ -23,8 +23,8 @@ void UNION(vector<PR>& DS, size_t x, size_t y)
   }
 }
 
-// 使用栈完成.
-size_t FIND_S(vector<PR>& DS, size_t x)
+// 使用栈完成, 如果将栈换成外部的向量并提前预留容量, 速度会快很多.
+size_t F_with_stack(vector<PR>& DS, size_t x)
 {
   stack<size_t> S;
   while (DS[x].parent != x)
@@ -41,7 +41,7 @@ size_t FIND_S(vector<PR>& DS, size_t x)
 }
 
 // 使用两次迭代完成.
-size_t FIND(vector<PR>& DS, size_t x)
+size_t F(vector<PR>& DS, size_t x)
 {
   size_t root = x;
   while (DS[root].parent != root)
@@ -71,13 +71,13 @@ int main()
   vector<PR> DS(7);
   for (size_t i = 0; i < DS.size(); ++i)
     DS[i] = {i, 0};
-  UNION(DS, FIND(DS, 1), FIND(DS, 5));
+  U(DS, F(DS, 1), F(DS, 5));
   print(DS);
-  UNION(DS, FIND(DS, 1), FIND(DS, 6));
+  U(DS, F(DS, 1), F(DS, 6));
   print(DS);
-  UNION(DS, FIND(DS, 2), FIND(DS, 4));
+  U(DS, F(DS, 2), F(DS, 4));
   print(DS);
-  UNION(DS, FIND(DS, 5), FIND(DS, 4));
+  U(DS, F(DS, 5), F(DS, 4));
   print(DS);
   return 0;
 }
