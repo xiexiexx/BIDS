@@ -21,30 +21,30 @@ int main()
 {
   vector<int> K = {89, -738, 2118, -439, 43289, 89, 67, 251};
   size_t n = 2 * K.size();
-  vector<set<int>> SH(n);
-  vector<vector<int>> VH(n);
-  vector<list<int>> LH(n);
+  vector<set<int>> S(n);
+  vector<vector<int>> V(n);
+  vector<list<int>> L(n);
   hash<int> h;
   for (const auto& x : K)
   {
     size_t pos = h(x) % n;
-    SH[pos].insert(x);
-    if (find(VH[pos].begin(), VH[pos].end(), x) == VH[pos].end())
-      VH[pos].push_back(x);
-    if (find(LH[pos].begin(), LH[pos].end(), x) == LH[pos].end())
-      LH[pos].push_front(x);
+    S[pos].insert(x);
+    if (find(V[pos].begin(), V[pos].end(), x) == V[pos].end())
+      V[pos].push_back(x);
+    if (find(L[pos].begin(), L[pos].end(), x) == L[pos].end())
+      L[pos].push_front(x);
   }
-  print_all(SH);
-  print_all(VH);
-  print_all(LH);
+  print_all(S);
+  print_all(V);
+  print_all(L);
   for (const auto& x : K)
   {
     size_t pos = h(x) % n;
-    SH[pos].erase(x);
-    auto iter = find(VH[pos].begin(), VH[pos].end(), x);
-    if (iter != VH[pos].end())
-      VH[pos].erase(iter);
-    LH[pos].remove(x);
+    S[pos].erase(x);
+    auto iter = find(V[pos].begin(), V[pos].end(), x);
+    if (iter != V[pos].end())
+      V[pos].erase(iter);
+    L[pos].remove(x);
   }
   return 0;
 }
