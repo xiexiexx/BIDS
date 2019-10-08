@@ -4,7 +4,8 @@
 
 using namespace std;
 
-void print_buckets(const unordered_set<int>& S)
+template <typename T>
+void print_buckets(const unordered_set<T>& S)
 {
   for (size_t i = 0; i < S.bucket_count(); ++i)
   {
