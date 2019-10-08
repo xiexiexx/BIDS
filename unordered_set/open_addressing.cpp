@@ -1,21 +1,26 @@
 #include <iostream>
 #include <vector>
 #include <unordered_set>
+#include <functional>
 
 using namespace std;
 
+template <typename T>
 struct pnode {
-  int key;
+  T key;
   bool empty;
   bool gone;
 };
 
-inline size_t probe(int k, size_t i, size_t m)
+template <typename T>
+inline size_t probe(T k, size_t i, size_t m)
 {
-  return (((size_t) k) + i ) % m;
+  hash<T> h;
+  return (h(k) + i ) % m;
 }
 
-void fill_blanks(vector<pnode>& H)
+template <typename T>
+void fill_blanks(vector<pnode<T>>& H)
 {
   for (auto& x : H)
   {
@@ -25,7 +30,8 @@ void fill_blanks(vector<pnode>& H)
 }
 
 // 插入元素之前得先查找保证该元素不在集合中.
-void insert(int k, vector<pnode>& H)
+template <typename T>
+void insert(vector<pnode<T>>& H, T k)
 {
   for (size_t i = 0; i < H.size(); ++i)
   {
@@ -45,7 +51,8 @@ void insert(int k, vector<pnode>& H)
   }
 }
 
-size_t search(int k, const vector<pnode>& H)
+template <typename T>
+size_t search(const vector<pnode<T>>& H, T k)
 {
   for (size_t i = 0; i < H.size(); ++i)
   {
@@ -58,7 +65,8 @@ size_t search(int k, const vector<pnode>& H)
   return H.size();
 }
 
-void print_all(const vector<pnode>& H)
+template <typename T>
+void print_all(const vector<pnode<T>>& H)
 {
   for (const auto& x : H)
     if (!x.empty && !x.gone)
@@ -66,30 +74,31 @@ void print_all(const vector<pnode>& H)
   cout << "==================" << endl;
 }
 
-void rehashing(vector<pnode>& H)
+template <typename T>
+void rehashing(vector<pnode<T>>& H)
 {
-  vector<pnode> W(2 * H.size());
+  vector<pnode<T>> W(2 * H.size());
   fill_blanks(W);
   for (const auto& x : H)
     if (!x.empty && !x.gone)
-      insert(x.key, W);
+      insert(W, x.key);
   H.swap(W);
 }
 
 int main()
 {
   vector<int> V = {-7, 4, 3, -6, 5, 4, 22, 71, 42, -96, 81, 12, 105};
-  vector<pnode> H(2 * V.size());
+  vector<pnode<int>> H(2 * V.size());
   fill_blanks(H);
   for (const auto& x : V)
-    insert(x, H);
-  size_t pos = search(42, H);
+    insert(H, x);
+  size_t pos = search(H, 42);
   if (pos != H.size())
     H[pos].gone = true;
   print_all(H);
-  insert(42, H);
+  insert(H, 42);
   rehashing(H);
-  insert(7, H);
+  insert(H, 7);
   print_all(H);
   return 0;
 }
