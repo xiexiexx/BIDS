@@ -8,10 +8,10 @@ using namespace std;
 template <typename T>
 void print_all(const T& H)
 {
-  for (const auto& X : H)
+  for (const auto& B : H)
   {
-    for (const auto& Y : X)
-      cout << Y << ' ';
+    for (const auto& x : B)
+      cout << x << ' ';
     cout << endl;
   }
   cout << "==================" << endl;
@@ -20,13 +20,14 @@ void print_all(const T& H)
 int main()
 {
   vector<int> K = {89, -738, 2118, -439, 43289, 89, 67, 251};
-  size_t N = 2 * K.size();
-  vector<set<int>> SH(N);
-  vector<vector<int>> VH(N);
-  vector<list<int>> LH(N);
+  size_t n = 2 * K.size();
+  vector<set<int>> SH(n);
+  vector<vector<int>> VH(n);
+  vector<list<int>> LH(n);
+  hash<int> h;
   for (const auto& x : K)
   {
-    size_t pos = ((size_t) x) % N;
+    size_t pos = h(x) % n;
     SH[pos].insert(x);
     if (find(VH[pos].begin(), VH[pos].end(), x) == VH[pos].end())
       VH[pos].push_back(x);
@@ -38,7 +39,7 @@ int main()
   print_all(LH);
   for (const auto& x : K)
   {
-    size_t pos = ((size_t) x) % N;
+    size_t pos = h(x) % n;
     SH[pos].erase(x);
     auto iter = find(VH[pos].begin(), VH[pos].end(), x);
     if (iter != VH[pos].end())
