@@ -2,24 +2,24 @@
 #include <bitset>
 using namespace std;
 
-template <size_t N>
-inline void CL(bitset<N>& S, size_t W)
+template <size_t n>
+inline void CL(bitset<n>& S, size_t w)
 {
-  W %= N;
-  S = S << W | S >> (N - W);
+  w %= n;
+  S = S << w | S >> (n - w);
 }
 
-template <size_t N>
-inline void CR(bitset<N>& S, size_t W)
+template <size_t n>
+inline void CR(bitset<n>& S, size_t w)
 {
-  W %= N;
-  S = S >> W | S << (N - W);
+  w %= n;
+  S = S >> w | S << (n - w);
 }
 
 int main()
 {
-  const size_t N = 16;
-  bitset<N> A;
+  const size_t n = 16;
+  bitset<n> A;
   cout << A.size() << endl;
   size_t pos = 7;
   A.set(pos);
@@ -38,19 +38,19 @@ int main()
   A >>= 1;
   cout << A << endl;
   size_t number = 5;
-  bitset<N> B(number);
+  bitset<n> B(number);
   cout << B << endl;
-  size_t W = 4;
-  auto C = B << W;
+  size_t w = 4;
+  auto C = B << w;
   cout << B << endl;
   cout << C << endl;
-  B >>= W;
+  B >>= w;
   cout << B << endl;
-  C >>= W;
+  C >>= w;
   cout << C << endl;
-  CL(C, W);
+  CL(C, w);
   cout << C << endl;
-  CR(C, W);
+  CR(C, w);
   cout << C << endl;
   return 0;
 }
