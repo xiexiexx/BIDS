@@ -70,7 +70,7 @@ void print_all(const vector<pnode<T>>& H)
   for (const auto& x : H)
     if (!x.empty && !x.gone)
       cout << x.key << endl;
-  cout << "==================" << endl;
+  cout << string(80, '=') << endl;
 }
 
 template <typename T>
