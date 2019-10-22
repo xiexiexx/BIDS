@@ -7,8 +7,8 @@ using namespace std;
 
 struct record {
   string name;
-  size_t age;
-  size_t code;
+  uint32_t age;
+  uint64_t code;
   string location;
 };
 
@@ -18,18 +18,18 @@ inline double time(clock_t start, clock_t end)
 }
 
 // 整个运行过程最大约占用10GB, 可根据硬件配置将n改小以保证运行.
-const size_t n = 100000000;
+const uint64_t n = 100000000;
 const double f = 0.5;
 
 int main()
 {
-  auto hf = [] (const record& x) { return hash<size_t>()(x.code); };
+  auto hf = [] (const record& x) { return hash<uint64_t>()(x.code); };
   auto eql = [] (const record& a, const record& b) { return a.code == b.code; };
   unordered_set<record, decltype(hf), decltype(eql)> S(0, hf, eql);
   S.max_load_factor(f);
   S.reserve(n);
   clock_t start = clock();
-  for (size_t i = 0; i < n; ++i)
+  for (uint64_t i = 0; i < n; ++i)
     S.insert({"X", 20, i, "SH"});
   clock_t end = clock();
   cout << "运行时间(s): " << time(start, end) << endl;
