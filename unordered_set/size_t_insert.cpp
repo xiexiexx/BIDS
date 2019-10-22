@@ -21,11 +21,11 @@ void insert(unordered_set<size_t>& S)
 
 size_t max(const unordered_set<size_t>& S)
 {
-  size_t M = 0;
+  size_t l = 0;
   for (size_t i = 0; i < S.bucket_count(); ++i)
-    if (S.bucket_size(i) > M)
-      M = S.bucket_size(i);
-  return M;
+    if (S.bucket_size(i) > l)
+      l = S.bucket_size(i);
+  return l;
 }
 
 int main()
