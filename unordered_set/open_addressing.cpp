@@ -15,7 +15,7 @@ template <typename T>
 inline size_t probe(T k, size_t i, size_t m)
 {
   hash<T> h;
-  return (h(k) + i ) % m;
+  return (h(k) + i) % m;
 }
 
 template <typename T>
