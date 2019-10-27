@@ -4,6 +4,6 @@
 
 ## Notes
 
-* [Chapter 00](notes/chapter-00.md)
-* [Chapter 01](notes/chapter-01.md)
+* [Chapter 00](notes/chapter_00.md)
+* [Chapter 01](notes/chapter_01.md)
 
