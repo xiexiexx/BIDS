@@ -2,8 +2,7 @@
 
 入门程序:
 
-{% embed url="https://github.com/xiexiexx/BIDS/blob/master/iostream/hello\_world.cpp" %}
+{% embed url="https://github.com/xiexiexx/BIDS/blob/master/iostream/hello\_world.cpp" caption="" %}
 
 
 
-* [World](iostream/hello_world.cpp)
