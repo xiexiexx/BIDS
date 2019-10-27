@@ -1,6 +1,6 @@
 # Table of contents
 
-* ["极简数据结构"系列视频](README.md)
+* [“极简数据结构”视频](README.md)
 
 ## Notes
 
