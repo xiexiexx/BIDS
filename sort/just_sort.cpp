@@ -7,44 +7,44 @@ using namespace std;
 
 int main()
 {
-  const int N = 5;
-  int a[N] = {2, 5, 3, 1, 4};
+  const int n = 5;
+  int A[n] = {2, 5, 3, 1, 4};
 
   // 从小到大排序.
-  sort(a, a + N);
-  for (int i = 0; i < N; ++i)
-    cout << a[i] << " ";
+  sort(A, A + n);
+  for (int i = 0; i < n; ++i)
+    cout << A[i] << " ";
   cout << endl;
 
   // 使用函数对象greater<int>()进行从大到小排序.
-  sort(a, a + N, greater<int>());
+  sort(A, A + n, greater<int>());
   // 有的编译器可能需要functional头文件.
-  for (int i = 0; i < N; ++i)
-    cout << a[i] << " ";
+  for (int i = 0; i < n; ++i)
+    cout << A[i] << " ";
   cout << endl;
 
   // 对字符串排序.
-  string b[N] = {"www", "algorithm", "racer", "text", "wait"};
-  sort(b, b + N);
-  for (int i = 0; i < N; ++i)
-    cout << b[i] << endl;
-  sort(b, b + N, greater<string>());
-  for (int i = 0; i < N; ++i)
-    cout << b[i] << endl;
+  string B[n] = {"www", "algorithm", "racer", "text", "wait"};
+  sort(B, B + n);
+  for (int i = 0; i < n; ++i)
+    cout << B[i] << endl;
+  sort(B, B + n, greater<string>());
+  for (int i = 0; i < n; ++i)
+    cout << B[i] << endl;
 
   // 对向量排序.
-  vector<string> v = {"www", "algorithm", "racer", "text", "wait"};
+  vector<string> V = {"www", "algorithm", "racer", "text", "wait"};
   // 从小到大排序.
-  sort(v.begin(), v.end());
+  sort(V.begin(), V.end());
   // 使用函数对象greater<int>()进行从大到小排序.
-  sort(v.begin(), v.end(), greater<string>());
-  // 使用迭代器打印v中所有元素.
-  for (auto iter = v.begin(); iter != v.end(); ++iter)
+  sort(V.begin(), V.end(), greater<string>());
+  // 使用迭代器打印V中所有元素.
+  for (auto iter = V.begin(); iter != V.end(); ++iter)
     cout << *iter << endl;
   // 使用逆向迭代器进行从大到小排序.
-  sort(v.rbegin(), v.rend());
-  // 使用基于范围的for循环打印v中所有元素.
-  for (const string& x : v)
+  sort(V.rbegin(), V.rend());
+  // 使用基于范围的for循环打印V中所有元素.
+  for (const string& x : V)
     cout << x << endl;
 
   return 0;
