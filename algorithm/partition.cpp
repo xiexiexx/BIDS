@@ -5,26 +5,26 @@
 using namespace std;
 
 template <typename iterator>
-iterator partition_Lomuto(iterator L, iterator M, iterator R)
+iterator partition_Lomuto(iterator left, iterator position, iterator right)
 {
-  if (L <= M && M < R)
+  if (left <= position && position < right)
   {
-    auto P = *M;
-    swap(*M, *--R);
-    for (M = L; M < R; ++M)
-      if (!(P < *M))
-        swap(*L++, *M);
-    swap(*L, *R);
+    auto z = *position;
+    swap(*position, *--right);
+    for (position = left; position < right; ++position)
+      if (*position < z)
+        swap(*left++, *position);
+    swap(*left, *right);
   }
-  return L;
+  return left;
 }
 
 int main()
 {
   vector<int> V = {5, 4, 3, 2, 1, 6, 7, 9, 0};
-  auto M = partition_Lomuto(V.begin(), V.begin() + 2, V.end());
+  auto pivot = partition_Lomuto(V.begin(), V.begin() + 2, V.end());
+  cout << *pivot << endl;
   for (const auto& x : V)
     cout << x << ' ';
-  cout << endl;
   return 0;
 }
