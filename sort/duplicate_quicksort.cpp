@@ -11,22 +11,22 @@ random_device rd;
 mt19937 gen(rd());
 
 template <typename iterator>
-void quicksort(iterator L, iterator R)
+void quicksort(iterator left, iterator right)
 {
-  if (L < R)
+  if (left + 1 < right)
   {
-    uniform_int_distribution<> dis(0, R - L - 1);
-    auto P = *(L + dis(gen));;
-    iterator LM = partition(L, R, [P](const auto& x) { return x < P; });
-    iterator MR = partition(LM, R, [P](const auto& x) { return !(P < x); });
-    quicksort(L, LM);
-    quicksort(MR, R);
+    uniform_int_distribution<> dis(0, right - left - 1);
+    auto z = *(left + dis(gen));;
+    iterator lr = partition(left, right, [z](const auto& x) { return x < z; });
+    iterator rl = partition(lr, right, [z](const auto& x) { return !(z < x); });
+    quicksort(left, lr);
+    quicksort(rl, right);
   }
 }
 
 int main()
 {
-  vector<int> V = {2, 1, 3, 4, 5};
+  vector<int> V = {2, 1, 2, 3, 4, 5, 3, 4, 5};
   srand(time(nullptr));
   quicksort(V.begin(), V.end());
   for (const auto& x : V)
