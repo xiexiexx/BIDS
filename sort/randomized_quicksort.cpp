@@ -11,17 +11,18 @@ random_device rd;
 mt19937 gen(rd());
 
 template <typename iterator>
-void quicksort(iterator L, iterator R)
+void quicksort(iterator left, iterator right)
 {
-  if (L + 1 < R)
+  if (left + 1 < right)
   {
-    uniform_int_distribution<> dis(0, R - L - 1);
-    swap(*L, *(L + dis(gen)));
-    auto P = *L;
-    iterator M = --partition(L + 1, R, [P](const auto& x) { return x < P; });
-    swap(*L, *M);
-    quicksort(L, M);
-    quicksort(M + 1, R);
+    uniform_int_distribution<> dis(0, right - left - 1);
+    swap(*left, *(left + dis(gen)));
+    auto z = *left;
+    iterator pivot =
+      partition(left + 1, right, [z](const auto& x) { return x < z; }) - 1;
+    swap(*left, *pivot);
+    quicksort(left, pivot);
+    quicksort(pivot + 1, right);
   }
 }
 
@@ -33,7 +34,5 @@ int main()
   for (const auto& x : V)
     cout << x << ' ';
   cout << endl;
-  if (1 < 1)
-    cout << "Y";
   return 0;
 }
