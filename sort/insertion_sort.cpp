@@ -9,11 +9,11 @@ void insertion_sort(vector<T>& V)
 {
   for (size_t i = 1; i < V.size(); ++i)
   {
-    auto key = V[i];
-    auto position = lower_bound(V.begin(), V.begin() + i, key);
+    T x = V[i];
+    auto position = lower_bound(V.begin(), V.begin() + i, x);
     for (auto iter = V.begin() + i; iter > position; --iter)
       *iter = *(iter - 1);
-    *position = key;
+    *position = x;
   }
 }
 
