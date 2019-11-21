@@ -9,19 +9,22 @@ using namespace std;
 template <typename iterator>
 void quickselect(iterator left, iterator right, size_t k)
 {
-  if (left + k < right)
+  while (left + k < right)
   {
     auto z = *left;
     iterator pivot =
       partition(left + 1, right, [z](const auto& x) { return x < z; }) - 1;
-    size_t d = pivot - left;
     swap(*left, *pivot);
+    size_t d = pivot - left;
     if (d == k)
       return;
     if (k < d)
-      quickselect(left, pivot, k);
+      right = pivot;
     else
-      quickselect(pivot + 1, right, k - d - 1);
+    {
+      left = pivot + 1;
+      k -= d + 1;
+    }
   }
 }
 
