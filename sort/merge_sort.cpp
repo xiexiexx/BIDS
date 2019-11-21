@@ -8,16 +8,16 @@ using namespace std;
 // 那样得在参数表里加入一个T类型或者vector<T>类型的参数,
 // 否则编译器无法仅凭vector<T>::iterator回溯获知T的类型.
 template <typename iterator>
-void merge_sort(iterator L, iterator R, iterator AUX)
+void merge_sort(iterator left, iterator right, iterator aux)
 {
-  if (L + 1 < R)
+  if (left + 1 < right)
   {
-    iterator M = L + (R - L) / 2;
-    merge_sort(L, M, AUX);
-    merge_sort(M, R, AUX);
-    // 如果使用inplace_merge(L, M, R);会略慢.
-    merge(L, M, M, R, AUX);
-    copy(AUX, AUX + (R - L), L);
+    iterator middle = left + (right - left) / 2;
+    merge_sort(left, middle, aux);
+    merge_sort(middle, right, aux);
+    // 如果使用inplace_merge(left, middle, right);会略慢.
+    merge(left, middle, middle, right, aux);
+    copy(aux, aux + (right - left), left);
   }
 }
 
