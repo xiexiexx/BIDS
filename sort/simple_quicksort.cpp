@@ -7,15 +7,16 @@ using namespace std;
 // 最好使用C++17编译本程序.
 
 template <typename iterator>
-void quicksort(iterator L, iterator R)
+void quicksort(iterator left, iterator right)
 {
-  if (L + 1 < R)
+  if (left + 1 < right)
   {
-    auto P = *L;
-    iterator M = --partition(L + 1, R, [P](const auto& x) { return x < P; });
-    swap(*L, *M);
-    quicksort(L, M);
-    quicksort(M + 1, R);
+    auto z = *left;
+    iterator pivot = 
+      partition(left + 1, right, [z](const auto& x) { return x < z; }) - 1;
+    swap(*left, *pivot);
+    quicksort(left, pivot);
+    quicksort(pivot + 1, right);
   }
 }
 
