@@ -6,10 +6,13 @@ using namespace std;
 
 // 最好使用C++17编译本程序.
 
+// 可思考将本程序改为随机化版本.
 template <typename iterator>
 void quickselect(iterator left, iterator right, size_t k)
 {
-  while (left + k < right)
+  if (left + k >= right)
+    return;
+  while (true)
   {
     auto z = *left;
     iterator pivot =
@@ -18,17 +21,16 @@ void quickselect(iterator left, iterator right, size_t k)
     size_t d = pivot - left;
     if (d == k)
       return;
-    if (k < d)
-      right = pivot;
-    else
+    if (d < k)
     {
+      // 考虑到d有可能为0, 但d与k不等, 所以将枢纽元计入防止无限循环.
       left = pivot + 1;
       k -= d + 1;
     }
+    else
+      right = pivot;
   }
 }
-
-// 可考虑将上述程序改为随机化版本.
 
 int main()
 {
