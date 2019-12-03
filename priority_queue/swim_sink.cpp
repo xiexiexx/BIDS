@@ -30,32 +30,32 @@ void sink(vector<T>& H, size_t i)
   // 暂存H[i]数据, 注意后续操作是和H[0]比较.
   H[0] = H[i];
   // 结点的右孩子编号.
-  size_t right_child = 2 * i + 1;
+  size_t right = 2 * i + 1;
   // 右孩子存在(即左右孩子均存在)时的下沉.
-  while (right_child < H.size())
+  while (right < H.size())
   {
-    // MAX为较大结点的编号, 注意其初值为0.
-    size_t MAX = 0;
-    // 右孩子较大则MAX换为右孩子编号.
-    if (H[MAX] < H[right_child])
-      MAX = right_child;
-    // 左孩子较大则MAX换为左孩子编号.
-    if (H[MAX] < H[right_child - 1])
-      MAX = right_child - 1;
+    // position为较大结点的编号, 注意其初值为0.
+    size_t position = 0;
+    // 右孩子较大则position换为右孩子编号.
+    if (H[position] < H[right])
+      position = right;
+    // 左孩子较大则position换为左孩子编号.
+    if (H[position] < H[right - 1])
+      position = right - 1;
     // 断言: 不需要交换则下沉结束.
-    if (MAX == 0)
+    if (position == 0)
       break;
     // 需要交换时先将较小的孩子存于i位置, 再继续向下判断.
-    H[i] = H[MAX];
-    i = MAX;
-    right_child = 2 * i + 1;
+    H[i] = H[position];
+    i = position;
+    right = 2 * i + 1;
   }
   // 处理特殊情况: 最后仅存在左孩子且需要继续下沉.
-  if (right_child == H.size() && H[0] < H[right_child - 1])
+  if (right == H.size() && H[0] < H[right - 1])
   {
     // 需要交换时先将左孩子存于i位置, 获得最终停留位置.
-    H[i] = H[right_child - 1];
-    i = right_child - 1;
+    H[i] = H[right - 1];
+    i = right - 1;
   }
   // 将初始结点处的数据存于下沉操作最终停留的位置.
   H[i] = H[0];
