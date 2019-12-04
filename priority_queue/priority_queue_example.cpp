@@ -7,22 +7,22 @@ using namespace std;
 int main()
 {
   // 最大优先级队列.
-  priority_queue<int> MAXPQ;
-  MAXPQ.push(2);
-  MAXPQ.push(3);
-  MAXPQ.push(1);
-  cout << MAXPQ.top() << endl;
-  MAXPQ.pop();
-  cout << MAXPQ.top() << endl;
+  priority_queue<int> M;
+  M.push(2);
+  M.push(3);
+  M.push(1);
+  cout << M.top() << endl;
+  M.pop();
+  cout << M.top() << endl;
   // 最小优先级队列, 关键是将判断准则改为greater<int>, 亦可自行定义准则.
-  priority_queue<int, vector<int>, greater<int>> MINPQ;
-  MINPQ.push(2);
-  MINPQ.push(3);
-  MINPQ.push(1);
-  while (!MINPQ.empty())
+  priority_queue<int, vector<int>, greater<int>> W;
+  W.push(2);
+  W.push(3);
+  W.push(1);
+  while (!W.empty())
   {
-    cout << MINPQ.top() << endl;
-    MINPQ.pop();
+    cout << W.top() << endl;
+    W.pop();
   }
   // 使用向量初始化最大堆的数据.
   vector<int> V = {2, 3, 1};
