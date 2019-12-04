@@ -56,16 +56,16 @@ int main()
     Q.push(PQ.top());
   while (!Q.empty())
   {
-    hnode* p = Q.front();
-    if (p->left != NULL)
+    hnode* current = Q.front();
+    if (current->left != NULL)
     {
-      Q.push(p->left);
-      p->left->code = p->code + "0";
+      Q.push(current->left);
+      current->left->code = current->code + "0";
     }
-    if (p->right != NULL)
+    if (current->right != NULL)
     {
-      Q.push(p->right);
-      p->right->code = p->code + "1";
+      Q.push(current->right);
+      current->right->code = current->code + "1";
     }
     Q.pop();
   }
