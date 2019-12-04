@@ -16,26 +16,26 @@ int main()
 {
   auto cmp = [](event a, event b) { return a.time > b.time; };
   priority_queue<event, vector<event>, decltype(cmp)> PQ(cmp);
-  const size_t N = 30;  // 车辆总数.
-  const size_t D = 20;  // 发车间隔.
-  for (size_t i = 0; i < N; ++i)
-    PQ.push({"B" + to_string(i + 1), i * D, 0});
+  const size_t n = 30;  // 车辆总数.
+  const size_t d = 20;  // 发车间隔.
+  for (size_t i = 0; i < n; ++i)
+    PQ.push({"B" + to_string(i + 1), i * d, 0});
   // 相邻站点之间的最短到达时间.
-  vector<size_t> gap = {5, 9, 8, 6, 7, 6, 4, 7};
+  vector<size_t> M = {5, 9, 8, 6, 7, 6, 4, 7};
   default_random_engine generator;
   uniform_int_distribution<size_t> distribution(0, 5);
   while (!PQ.empty())
   {
-    event E = PQ.top();
+    event current = PQ.top();
     PQ.pop();
-    cout << "Current time: " << E.time
-         << ", Bus: " << E.name
-         << ", Station: " << E.station << endl;
-    if (E.station != gap.size())
+    cout << "Current time: " << current.time
+         << ", Bus: " << current.name
+         << ", Station: " << current.station << endl;
+    if (current.station != M.size())
     {
       size_t delay = distribution(generator);
-      E.time += gap[E.station++] + delay;
-      PQ.push(E);
+      current.time += M[current.station++] + delay;
+      PQ.push(current);
     }
   }
   return 0;
