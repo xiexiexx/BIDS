@@ -25,30 +25,30 @@ int main()
   // 存储Huffman树的最小优先级队列PQ, 优先级为树的权值, 实际存储的是树的根结点指针.
   auto cmp = [](hnode* a, hnode* b) { return a->weight > b->weight; };
   priority_queue<hnode*, vector<hnode*>, decltype(cmp)> PQ(cmp);
-  // 一次性给出所有在编码中会出现的结点.
-  vector<hnode> data (P.size() > 0 ? 2 * P.size() - 1 : 0);
-  // index指示当前会使用data[index]处的结点, 注意其作用域不仅限于下面的for循环.
+  // 一次性给出所有在编码中会出现的结点, 以数据向量D存储.
+  vector<hnode> D(P.size() > 0 ? 2 * P.size() - 1 : 0);
+  // index指示当前会使用D[index]处的结点, 注意其作用域不仅限于下面的for循环.
   size_t index;
-  // data中初始设定n棵仅有根结点的树, 并放入优先级队列PQ中.
+  // D中初始设定n棵仅有根结点的树, 并放入优先级队列PQ中.
   for (index = 0; index < P.size(); ++index)
   {
-    data[index] = {"", P[index], index, NULL, NULL};
-    PQ.push(&data[index]);
+    D[index] = {"", P[index], index, NULL, NULL};
+    PQ.push(&D[index]);
   }
   // 循环处理以构建Huffman树.
   while (PQ.size() > 1)
   {
-    data[index].number = index;
+    D[index].number = index;
     // 将优先级队列中的最小元作为当前结点的左孩子并删去最小元.
-    data[index].weight = PQ.top()->weight;
-    data[index].left = PQ.top();
+    D[index].weight = PQ.top()->weight;
+    D[index].left = PQ.top();
     PQ.pop();
     // 将优先级队列中的最小元作为当前结点的右孩子并删去最小元.
-    data[index].weight += PQ.top()->weight;
-    data[index].right = PQ.top();
+    D[index].weight += PQ.top()->weight;
+    D[index].right = PQ.top();
     PQ.pop();
     // 将新的树放入优先级队列并且更新编号index.
-    PQ.push(&data[index++]);
+    PQ.push(&D[index++]);
   }
   // 在屏幕上输出每个字母的Huffman编码.
   queue<hnode*> Q;
@@ -70,6 +70,6 @@ int main()
     Q.pop();
   }
   for (size_t i = 0; i < P.size(); ++i)
-    cout << (char)('A' + i) << "->" << data[i].code << endl;
+    cout << (char)('A' + i) << "->" << D[i].code << endl;
   return 0;
 }
