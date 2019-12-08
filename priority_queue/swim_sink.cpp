@@ -12,20 +12,26 @@ void print_heap(const vector<T>& H)
   cout << endl;
 }
 
-template <typename T>
-void swim(vector<T>& H, size_t i)
+template <typename T, typename compare>
+void swim(vector<T>& H, size_t i, compare cmp)
 {
   // 在H[0]处设置哨兵以终止循环, 并保存初始结点i处的数据.
   // 如果H[0]大于i位置的父亲结点值H[i / 2]则不断让i位置上浮,
   // 但初始结点处的数据暂不处理, 其值仍存于H[0].
-  for (H[0] = H[i]; H[i / 2] < H[0]; i /= 2)
+  for (H[0] = H[i]; cmp(H[i / 2], H[0]); i /= 2)
     H[i] = H[i / 2];
   // 将初始结点处的数据存于上浮操作最终停留的位置.
   H[i] = H[0];
 }
 
 template <typename T>
-void sink(vector<T>& H, size_t i)
+void swim(vector<T>& H, size_t i)
+{
+  swim(H, i, less<T>());
+}
+
+template <typename T, typename compare>
+void sink(vector<T>& H, size_t i, compare cmp)
 {
   // 暂存H[i]数据, 注意后续操作是和H[0]比较.
   H[0] = H[i];
@@ -37,10 +43,10 @@ void sink(vector<T>& H, size_t i)
     // position为较大结点的编号, 注意其初值为0.
     size_t position = 0;
     // 右孩子较大则position换为右孩子编号.
-    if (H[position] < H[right])
+    if (cmp(H[position], H[right]))
       position = right;
     // 左孩子较大则position换为左孩子编号.
-    if (H[position] < H[right - 1])
+    if (cmp(H[position], H[right - 1]))
       position = right - 1;
     // 断言: 不需要交换则下沉结束.
     if (position == 0)
@@ -51,7 +57,7 @@ void sink(vector<T>& H, size_t i)
     right = 2 * i + 1;
   }
   // 处理特殊情况: 最后仅存在左孩子且需要继续下沉.
-  if (right == H.size() && H[0] < H[right - 1])
+  if (right == H.size() && cmp(H[0], H[right - 1]))
   {
     // 需要交换时先将左孩子存于i位置, 获得最终停留位置.
     H[i] = H[right - 1];
@@ -59,6 +65,12 @@ void sink(vector<T>& H, size_t i)
   }
   // 将初始结点处的数据存于下沉操作最终停留的位置.
   H[i] = H[0];
+}
+
+template <typename T>
+void sink(vector<T>& H, size_t i)
+{
+  sink(H, i, less<T>());
 }
 
 int main()
