@@ -9,7 +9,7 @@ using namespace std;
 struct hnode {
   string code;
   double weight;
-  // 设原始符号共N个, 以编号number区分原始符号结点(0到N - 1)和编码过程中出现的新结点.
+  // 设原始符号共n个, 以编号number区分原始符号结点(0到n - 1)和编码过程中出现的新结点.
   size_t number;
   hnode* left;
   hnode* right;
