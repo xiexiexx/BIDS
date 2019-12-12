@@ -29,7 +29,7 @@ int main()
   // 利用pop_heap完成堆排序, 最大堆最后变成从小到大按升序排练的向量.
   auto B = V;
   make_heap(B.begin(), B.end());
-  for (size_t d = B.size(); d > 1; d--)
+  for (size_t d = B.size(); d > 1; --d)
   {
     pop_heap(B.begin(), B.begin() + d);
     print_all(B);
