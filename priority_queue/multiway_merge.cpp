@@ -7,11 +7,13 @@ using namespace std;
 template <typename T>
 void merge(const vector<vector<T>>& V, vector<T>& S)
 {
-  size_t L = 0;
+  // 统计有序序列的元素总数n.
+  size_t n = 0;
   for (const auto& X : V)
-    L += X.size();
+    n += X.size();
   S.clear();
-  S.reserve(L);
+  S.reserve(n);
+  // 以范围形式描述当前待处理的有序序列.
   using range = pair<decltype(V[0].begin()), decltype(V[0].end())>;
   auto cmp = [](range a, range b) { return *(b.first) < *(a.first); };
   priority_queue<range, vector<range>, decltype(cmp)> PQ(cmp);
@@ -20,11 +22,11 @@ void merge(const vector<vector<T>>& V, vector<T>& S)
       PQ.push({X.begin(), X.end()});
   while (!PQ.empty())
   {
-    auto R = PQ.top();
+    auto interval = PQ.top();
     PQ.pop();
-    S.push_back(*(R.first++));
-    if (R.first != R.second)
-      PQ.push(R);
+    S.push_back(*(interval.first++));
+    if (interval.first != interval.second)
+      PQ.push(interval);
   }
 }
 
