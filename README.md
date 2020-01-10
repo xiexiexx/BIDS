@@ -20,5 +20,4 @@ A Brief Introduction to Data Structures
 * **第9章：排序**
 * **第10章：优先级队列**
 
-课程目前有完整的C++代码，目前正在更新Python 3代码，欢迎来PR!
-
+课程目前有完整的C++代码，目前正在更新Python代码，欢迎来PR!
