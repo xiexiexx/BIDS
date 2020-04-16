@@ -11,12 +11,12 @@ const string text[s] = {"不匹配", "匹配", "存在非法字符", ""};
 int generalized_validator(const string& brackets, int value[])
 {
   stack<char> S;
-  for (size_t i = 0; i < brackets.size(); ++i)
-    if (value[(int)brackets[i]] == illegal)                   // 非法符号直接退出.
+  for (auto x : brackets)
+    if (value[(int)x] == illegal)                   // 非法符号直接退出.
       return illegal;
-    else if (value[(int)brackets[i]] == in)                   // 左括号应该进栈.
-      S.push(brackets[i]);
-    else if (S.empty() || S.top() != value[(int)brackets[i]]) // 无法弹栈.
+    else if (value[(int)x] == in)                   // 左括号应该进栈.
+      S.push(x);
+    else if (S.empty() || S.top() != value[(int)x]) // 无法弹栈.
       return not_matched;
     else
       S.pop();
