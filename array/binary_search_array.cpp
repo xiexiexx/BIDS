@@ -7,8 +7,8 @@ using namespace std;
 template <typename T>
 int binary_search_array(const T& key, const T data[], int n)
 {
-  if (n < 0)
-    return -1;
+  if (n <= 0)
+    return n;
   int low = 0;
   int high = n - 1;
   while (low <= high)
