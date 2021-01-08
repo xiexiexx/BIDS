@@ -14,17 +14,6 @@ int linear_search_array(const T& key, const T data[], int n)
   return n;             // 未找到key, 返回n.
 }
 
-// 线性查找: 带有哨兵的数组版本. 要求data的长度大于n.
-template <typename T>
-int linear_search_array_sentinel(const T& key, T data[], int n)
-{
-  data[n] = key;
-  int i = 0;
-  while (data[i] != key)
-      ++i;
-  return i;
-}
-
 // 线性查找: 向量版本.
 template <typename T>
 size_t linear_search_vector(const T& key, const vector<T>& data)
@@ -50,9 +39,8 @@ int main()
 {
   const int n = 5;
   int A[n + 1] = {3, 2, 1, 4, 5, 0};
-  vector<string> V = {"RSA", "Apple", "WWW"};
+  vector<string> V = {"RSA", "Apple", "WWW", "While", "X"};
   cout << linear_search_array(1, A, n) << endl;
-  cout << linear_search_array_sentinel(9, A, n) << endl;
   string key = "Apple";
   cout << linear_search_vector(key, V) << endl;
   key = "Algorithm";
