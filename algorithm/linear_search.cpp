@@ -42,20 +42,6 @@ iterator linear_search_iterator(const T& key, iterator left, iterator right)
   return left;
 }
 
-/*
- * 原始写法有点冗长.
- * while (left != right)
- * {
- *   if (*left == key)
- *     return left;
- *   ++left;
- * }
- * return left;
- * 另外, 不要过度追求简洁而出错, 从而返回不正确的迭代器位置.
- * if (*left++ == key)
- *   return left;
- */
-
 int main()
 {
   const int n = 5;
