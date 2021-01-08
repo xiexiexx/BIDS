@@ -4,16 +4,17 @@
 
 using namespace std;
 
+// 线性查找: 数组版本.
 template <typename T>
 int linear_search_array(const T& key, const T data[], int n)
 {
   for (int i = 0; i < n; ++i)
     if (data[i] == key)
-      return i;
-  return n;
+      return i;         // 找到key, 返回位置信息.
+  return n;             // 未找到key, 返回n.
 }
 
-// 要求data的长度大于n.
+// 线性查找: 带有哨兵的数组版本. 要求data的长度大于n.
 template <typename T>
 int linear_search_array_sentinel(const T& key, T data[], int n)
 {
@@ -24,17 +25,20 @@ int linear_search_array_sentinel(const T& key, T data[], int n)
   return i;
 }
 
+// 线性查找: 向量版本.
 template <typename T>
 size_t linear_search_vector(const T& key, const vector<T>& data)
 {
   for (size_t i = 0; i < data.size(); ++i)
     if (data[i] == key)
-      return i;
-  return data.size();
+      return i;         // 找到key, 返回位置信息.
+  return data.size();   // 未找到key, 返回data.size().
 }
 
+// 线性查找: 以迭代器方式实现.
 template <typename T, typename iterator>
-iterator linear_search_iterator(const T& key, iterator left, iterator right)
+iterator linear_search_iterator(const T& key,
+  iterator left, iterator right)
 {
   // 巧妙利用短路表达式简化代码.
   while (left != right && *left != key)
