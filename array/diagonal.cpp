@@ -21,8 +21,8 @@ int main()
   for (int i = 0; i < n; ++i)
     for (int j = 0; j < n; ++j)
       M[i][j] = y;
-  for (int i = 0; i < n; ++i)
-    M[i][i] = x;
+  for (int k = 0; k < n; ++k)
+    M[k][k] = x;
 
   // 方法3:
   for (int i = 0; i < n; ++i)
