@@ -16,6 +16,7 @@ int main()
         M[i][j] = x;
       else
         M[i][j] = y;
+  // 或者写成 M[i][j] = (i == j) ? x : y;
 
   // 方法2:
   for (int i = 0; i < n; ++i)
