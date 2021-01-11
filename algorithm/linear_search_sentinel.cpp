@@ -18,7 +18,7 @@ int linear_search_array_sentinel(const T& key, T data[], int n)
 // 线性查找: 带有哨兵的向量版本.
 // 要求向量容量data.capacity()大于data.size().
 template <typename T>
-int linear_search_vector_sentinel(const T& key, vector<T>& data)
+size_t linear_search_vector_sentinel(const T& key, vector<T>& data)
 {
   data.push_back(key);
   size_t i = 0;
