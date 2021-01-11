@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <list>
 
 using namespace std;
 
@@ -28,14 +29,30 @@ size_t linear_search_vector_sentinel(const T& key, vector<T>& data)
   return i;
 }
 
+// 线性查找: 带有哨兵的迭代器方式实现.
+// 要求末尾单独留有空位.
+template <typename T, typename iterator>
+iterator linear_search_iterator_sentinel(const T& key,
+  iterator left, iterator right)
+{
+  *right = key;
+  while (*left != key)
+    ++left;
+  return left;
+}
+
 int main()
 {
   const int n = 5;
   int A[n + 1] = {3, 2, 1, 4, 5, 0};
   vector<string> V = {"RSA", "Apple", "WWW", "While", "X"};
+  list<string> L = {"RSA", "Apple", "WWW", "While", "X", ""};
   V.reserve(2 * n);
   cout << linear_search_array_sentinel(9, A, n) << endl;
   string key = "Apple";
   cout << linear_search_vector_sentinel(key, V) << endl;
+  auto iter = linear_search_iterator_sentinel(key, L.begin(), L.end());
+  if (iter != L.end())
+    cout << *iter << endl;
   return 0;
 }
