@@ -21,6 +21,9 @@ int main()
   // 可用auto关键字配合赋值语句自动获取其类型.
   for (auto iter = A.begin(); iter != A.end(); ++iter)
     *iter = 1;
+  // 也可以使用基于范围的for循环完成赋值, 遍取A中的元素x(引用方式).
+  for (auto& x : A)
+    x = 1;
 
   // 定义一个长度为5的向量B, 初始元素全为3.
   vector<int> B(5, 3);
