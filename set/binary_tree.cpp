@@ -11,8 +11,8 @@ struct tnode {
   tnode<T>* parent;
 };
 
-template <typename iterator>
-void pre_order(iterator p)
+template <typename IR>
+void pre_order(IR p)
 {
   if (p != NULL)
   {
@@ -22,8 +22,8 @@ void pre_order(iterator p)
   }
 }
 
-template <typename iterator>
-void in_order(iterator p)
+template <typename IR>
+void in_order(IR p)
 {
   if (p != NULL)
   {
@@ -33,8 +33,8 @@ void in_order(iterator p)
   }
 }
 
-template <typename iterator>
-void post_order(iterator p)
+template <typename IR>
+void post_order(IR p)
 {
   if (p != NULL)
   {
@@ -44,15 +44,15 @@ void post_order(iterator p)
   }
 }
 
-template <typename iterator>
-void level_order(iterator p)
+template <typename IR>
+void level_order(IR p)
 {
-  queue<iterator> Q;
+  queue<IR> Q;
   if (p != NULL)
     Q.push(p);
   while (!Q.empty())
   {
-    iterator f = Q.front();
+    IR f = Q.front();
     cout << f->data << ' ';
     if (f->left != NULL)
       Q.push(f->left);
@@ -64,15 +64,15 @@ void level_order(iterator p)
 
 double alpha;
 
-template <typename iterator>
-iterator tree_generation(iterator start, size_t n)
+template <typename IR>
+IR tree_generation(IR start, size_t n)
 {
   if (n < 1)
     return NULL;
   size_t c = (n - 1) * alpha;
-  iterator root = start + c;
-  iterator left_subtree = tree_generation(start, c);
-  iterator right_subtree = tree_generation(start + c + 1, n - 1 - c);
+  IR root = start + c;
+  IR left_subtree = tree_generation(start, c);
+  IR right_subtree = tree_generation(start + c + 1, n - 1 - c);
   root->left = left_subtree;
   root->right = right_subtree;
   if (left_subtree != NULL)
@@ -82,28 +82,28 @@ iterator tree_generation(iterator start, size_t n)
   return root;
 }
 
-template <typename iterator>
-iterator left_most(iterator p)
+template <typename IR>
+IR left_most(IR p)
 {
   while (p->left != NULL)
     p = p->left;
   return p;
 }
 
-template <typename iterator>
-iterator right_most(iterator p)
+template <typename IR>
+IR right_most(IR p)
 {
   while (p->right != NULL)
     p = p->right;
   return p;
 }
 
-template <typename iterator>
-iterator next_position(iterator p)
+template <typename IR>
+IR next_position(IR p)
 {
   if (p->right != NULL)
     return left_most(p->right);
-  iterator last = p;
+  IR last = p;
   while (p != NULL)
   {
     if (last == p->left)
@@ -114,12 +114,12 @@ iterator next_position(iterator p)
   return p;
 }
 
-template <typename iterator>
-iterator prev_position(iterator p)
+template <typename IR>
+IR prev_position(IR p)
 {
   if (p->left != NULL)
     return right_most(p->left);
-  iterator last = p;
+  IR last = p;
   while (p != NULL)
   {
     if (last == p->right)

@@ -25,9 +25,8 @@ size_t linear_search_vector(const T& key, const vector<T>& data)
 }
 
 // 线性查找: 以迭代器方式实现.
-template <typename T, typename iterator>
-iterator linear_search_iterator(const T& key,
-  iterator left, iterator right)
+template <typename T, typename IR>
+IR linear_search_iterator(const T& key, IR left, IR right)
 {
   // 巧妙利用短路表达式简化代码.
   while (left != right && *left != key)

@@ -30,9 +30,8 @@ size_t linear_search_vector_sentinel(const T& key, vector<T>& data)
 }
 
 // 线性查找: 带有哨兵的迭代器方式实现. 要求末尾单独留有空位.
-template <typename T, typename iterator>
-iterator linear_search_iterator_sentinel(const T& key,
-  iterator left, iterator right)
+template <typename T, typename IR>
+IR linear_search_iterator_sentinel(const T& key, IR left, IR right)
 {
   *right = key;
   while (*left != key)
