@@ -5,13 +5,13 @@
 using namespace std;
 
 // 计数.
-template <typename iterator>
-iterator count_and_find(iterator left, iterator right, size_t k)
+template <typename IR>
+IR count_and_find(IR left, IR right, size_t k)
 {
   if (k < 1)
     return right;
   size_t n = 0;
-  for (iterator position = left; position != right; ++position)
+  for (IR position = left; position != right; ++position)
     ++n;
   if (n < k)
     return right;
@@ -21,18 +21,18 @@ iterator count_and_find(iterator left, iterator right, size_t k)
 }
 
 // 双指针.
-template <typename iterator>
-iterator front_and_back(iterator left, iterator right, size_t k)
+template <typename IR>
+IR front_and_back(IR left, IR right, size_t k)
 {
   if (k < 1)
     return right;
-  iterator front = left;
+  IR front = left;
   for (size_t i = 0; i < k; ++i)
     if (front != right)
       ++front;
     else
       return right;
-  iterator back = left;
+  IR back = left;
   while (front != right)
   {
     ++front;
@@ -42,21 +42,21 @@ iterator front_and_back(iterator left, iterator right, size_t k)
 }
 
 // 基于平移的双指针.
-template <typename iterator>
-iterator updated_front_and_back(iterator left, iterator right, size_t k)
+template <typename IR>
+IR updated_front_and_back(IR left, IR right, size_t k)
 {
   if (k < 1)
     return right;
-  iterator front = left;
+  IR front = left;
   size_t i;
   for (i = 0; i < k; ++i)
     if (front != right)
       ++front;
     else
       return right;
-  iterator back = left;
+  IR back = left;
   i = 0;
-  for (iterator position = front; position != right; ++position, ++i)
+  for (IR position = front; position != right; ++position, ++i)
     if (i == k)
     {
       i = 0;
@@ -72,15 +72,15 @@ iterator updated_front_and_back(iterator left, iterator right, size_t k)
 }
 
 // 重新利用计数和取模给出更多信息, 效果不好.
-template <typename iterator>
-iterator mod_updated_front_and_back(iterator left, iterator right, size_t k)
+template <typename IR>
+IR mod_updated_front_and_back(IR left, IR right, size_t k)
 {
   if (k < 1)
     return right;
   size_t n = 0;
-  iterator front = left;
-  iterator back;
-  for (iterator position = left; position != right; ++position, ++n)
+  IR front = left;
+  IR back;
+  for (IR position = left; position != right; ++position, ++n)
     if (n % k == 0)
     {
       back = front;
@@ -99,8 +99,8 @@ iterator mod_updated_front_and_back(iterator left, iterator right, size_t k)
 }
 
 // 在[0, n + 1]范围内测试函数正确性与性能.
-template <typename function, typename iterator>
-void pass(function find_kth_from_end, iterator left, iterator right, size_t n)
+template <typename FN, typename IR>
+void pass(FN find_kth_from_end, IR left, IR right, size_t n)
 {
   clock_t start, end;
   start = clock();
