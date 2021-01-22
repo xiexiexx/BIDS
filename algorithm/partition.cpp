@@ -4,8 +4,8 @@
 
 using namespace std;
 
-template <typename iterator>
-iterator partition_Lomuto(iterator left, iterator position, iterator right)
+template <typename IR>
+IR partition_Lomuto(IR left, IR position, IR right)
 {
   if (left <= position && position < right)
   {

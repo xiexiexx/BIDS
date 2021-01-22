@@ -4,11 +4,11 @@
 using namespace std;
 
 // 基于迭代器打印容器中所有元素.
-template <typename iterator>
-void print_all(iterator L, iterator R)
+template <typename IR>
+void print_all(IR left, IR right)
 {
-  while (L != R)
-    cout << *L++ << ' ';
+  while (left != right)
+    cout << *left++ << ' ';
   cout << endl;
 }
 

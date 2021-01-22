@@ -9,11 +9,11 @@ struct snode {
   snode* next;
 };
 
-template <typename iterator>
-bool cycle_detection(iterator start)
+template <typename IR>
+bool cycle_detection(IR start)
 {
-  iterator hare = start;
-  iterator tortoise = start;
+  IR hare = start;
+  IR tortoise = start;
   while (hare != NULL && hare->next != NULL && tortoise != NULL)
   {
     hare = hare->next->next;

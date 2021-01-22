@@ -10,15 +10,15 @@ using namespace std;
 random_device rd;
 mt19937 gen(rd());
 
-template <typename iterator>
-void quicksort(iterator left, iterator right)
+template <typename IR>
+void quicksort(IR left, IR right)
 {
   if (left + 1 < right)
   {
     uniform_int_distribution<> dis(0, right - left - 1);
     swap(*left, *(left + dis(gen)));
     auto z = *left;
-    iterator pivot =
+    IR pivot =
       partition(left + 1, right, [z](const auto& x) { return x < z; }) - 1;
     swap(*left, *pivot);
     quicksort(left, pivot);

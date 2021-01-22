@@ -24,16 +24,16 @@ bool binary_search_vector(const T& key, typename vector<T>::iterator data,
 }
 
 // 使用迭代器, 描述更清晰, 而且还可支持数组.
-template <typename T, typename iterator>
-bool binary_search_iterator(const T& key, iterator L, iterator R)
+template <typename T, typename IR>
+bool binary_search_iterator(const T& key, IR left, IR right)
 {
-  while (L < R)
+  while (left < right)
   {
-    iterator M = L + (R - L) / 2;
-    if (key < *M)       // 小则去前半部分继续查找.
-      R = M;
-    else if (*M < key)  // 大则去后半部分继续查找.
-      L = M + 1;
+    IR middle = left + (right - left) / 2;
+    if (key < *middle)      // 小则去前半部分继续查找.
+      right = middle;
+    else if (*middle < key) // 大则去后半部分继续查找.
+      left = middle + 1;
     else
       return true;
   }

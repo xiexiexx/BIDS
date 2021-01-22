@@ -6,13 +6,13 @@ using namespace std;
 
 // 最好使用C++17编译本程序.
 
-template <typename iterator>
-void quicksort(iterator left, iterator right)
+template <typename IR>
+void quicksort(IR left, IR right)
 {
   if (left + 1 < right)
   {
     auto z = *left;
-    iterator pivot = 
+    IR pivot = 
       partition(left + 1, right, [z](const auto& x) { return x < z; }) - 1;
     swap(*left, *pivot);
     quicksort(left, pivot);

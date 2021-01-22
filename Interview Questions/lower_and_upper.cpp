@@ -3,12 +3,12 @@
 
 using namespace std;
 
-template <typename T, typename iterator>
-iterator lower(const T& key, iterator left, iterator right)
+template <typename T, typename IR>
+IR lower(const T& key, IR left, IR right)
 {
   while (left < right)
   {
-    iterator middle = left + (right - left) / 2;
+    IR middle = left + (right - left) / 2;
     if (*middle < key)
       left = middle + 1;
     else
@@ -17,12 +17,12 @@ iterator lower(const T& key, iterator left, iterator right)
   return left;
 }
 
-template <typename T, typename iterator>
-iterator upper(const T& key, iterator left, iterator right)
+template <typename T, typename IR>
+IR upper(const T& key, IR left, IR right)
 {
   while (left < right)
   {
-    iterator middle = left + (right - left) / 2;
+    IR middle = left + (right - left) / 2;
     if (key < *middle)
       right = middle;
     else

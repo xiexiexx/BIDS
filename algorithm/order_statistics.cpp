@@ -7,15 +7,15 @@ using namespace std;
 // 最好使用C++17编译本程序.
 
 // 可思考将本程序改为随机化版本.
-template <typename iterator>
-void quickselect(iterator left, iterator right, size_t k)
+template <typename IR>
+void quickselect(IR left, IR right, size_t k)
 {
   if (left + k >= right)
     return;
   while (true)
   {
     auto z = *left;
-    iterator pivot =
+    IR pivot =
       partition(left + 1, right, [z](const auto& x) { return x < z; }) - 1;
     swap(*left, *pivot);
     size_t d = pivot - left;
