@@ -23,7 +23,7 @@ void print_all(const T& S)
 
 int main()
 {
-  set<int> S = {3, 1, 2, 4, 5};
+  set<int> S {3, 1, 2, 4, 5};
   print_all(S.begin(), S.end());
   print_all(S);
 

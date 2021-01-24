@@ -16,8 +16,8 @@ void print_all(const T& S)
 int main()
 {
   // 差集.
-  set<int> A = {3, 2, 1, 4, 7, 9, 11};
-  set<int> B = {6, 2, 9};
+  set<int> A {3, 2, 1, 4, 7, 9, 11};
+  set<int> B {6, 2, 9};
   vector<int> C;
   C.reserve(A.size());
   for (auto iter = A.begin(); iter != A.end(); ++iter)
@@ -26,7 +26,7 @@ int main()
   print_all(C);
 
   // 转存.
-  set<string> D = {"English", "Ability", "Algorithm", "Faith", "Data"};
+  set<string> D {"English", "Ability", "Algorithm", "Faith", "Data"};
   set<string> E;
   while (!D.empty())
   {
@@ -38,7 +38,7 @@ int main()
   // 思考: 如果D是vector<string>型, 如何高效去除不合要求的元素?
 
   // 动态变化.
-  set<int> F = {3, 5, 1, 7, 2, 8, 0};
+  set<int> F {3, 5, 1, 7, 2, 8, 0};
   while (F.size() > 1)
   {
     int first = *F.begin();

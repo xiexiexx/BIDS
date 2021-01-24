@@ -33,7 +33,7 @@ int main()
     cout << B[i] << endl;
 
   // 对向量排序.
-  vector<string> V = {"www", "algorithm", "racer", "text", "wait"};
+  vector<string> V {"www", "algorithm", "racer", "text", "wait"};
   // 从小到大排序.
   sort(V.begin(), V.end());
   // 使用函数对象greater<int>()进行从大到小排序.

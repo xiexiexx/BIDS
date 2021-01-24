@@ -43,9 +43,9 @@ int main()
 {
   const int n = 5;
   int A[n + 1] = {3, 2, 1, 4, 5, 0};
-  vector<string> V = {"RSA", "Apple", "WWW", "While", "X"};
+  vector<string> V {"RSA", "Apple", "WWW", "While", "X"};
   string sentinel;
-  list<string> L = {"RSA", "Apple", "WWW", "While", "X", sentinel};
+  list<string> L {"RSA", "Apple", "WWW", "While", "X", sentinel};
   V.reserve(2 * n);
   cout << linear_search_array_sentinel(9, A, n) << endl;
   string key = "Apple";

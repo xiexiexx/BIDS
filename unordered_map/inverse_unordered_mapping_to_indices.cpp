@@ -7,9 +7,8 @@ using namespace std;
 
 int main()
 {
-  vector<pair<string, string>> G = {
-    {"O(1)", "O(logn)"}, {"O(n)", "O(n^2)"}, {"O(logn)", "O(n)"}
-  };
+  vector<pair<string, string>> G
+    {{"O(1)", "O(logn)"}, {"O(n)", "O(n^2)"}, {"O(logn)", "O(n)"}};
   // 利用unordered_map处理逆映射.
   vector<string> M;
   M.reserve(2 * G.size());

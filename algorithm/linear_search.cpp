@@ -38,7 +38,7 @@ int main()
 {
   const int n = 5;
   int A[n + 1] = {3, 2, 1, 4, 5, 0};
-  vector<string> V = {"RSA", "Apple", "WWW", "While", "X"};
+  vector<string> V {"RSA", "Apple", "WWW", "While", "X"};
   cout << linear_search_array(1, A, n) << endl;
   string key = "Apple";
   cout << linear_search_vector(key, V) << endl;

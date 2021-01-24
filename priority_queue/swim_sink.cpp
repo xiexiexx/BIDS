@@ -76,7 +76,7 @@ void sink(vector<T>& H, size_t i)
 int main()
 {
   int sentinal;
-  vector<int> H = {sentinal, 9, 8, 7, 5, 6, 4, 3, 1, 0, 2};
+  vector<int> H {sentinal, 9, 8, 7, 5, 6, 4, 3, 1, 0, 2};
   int d = 10;
   H[5] += d;
   swim(H, 5);

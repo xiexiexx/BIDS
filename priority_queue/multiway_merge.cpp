@@ -32,7 +32,7 @@ void merge(const vector<vector<T>>& V, vector<T>& S)
 
 int main()
 {
-  vector<vector<int>> A = {{1, 2, 4}, {}, {2, 3, 5}, {3, 4, 6, 8}};
+  vector<vector<int>> A {{1, 2, 4}, {}, {2, 3, 5}, {3, 4, 6, 8}};
   // A[0], A[1], A[2], A[3]均为有序向量.
   vector<int> B;
   merge(A, B);

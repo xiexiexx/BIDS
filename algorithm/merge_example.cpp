@@ -15,8 +15,8 @@ void print_all(const T& S)
 
 int main()
 {
-  vector<int> A = {1, 2, 3};
-  vector<int> B = {2, 4};
+  vector<int> A {1, 2, 3};
+  vector<int> B {2, 4};
   vector<int> C(A.size() + B.size());
   auto va = A.begin();
   auto vb = B.begin();
@@ -38,8 +38,8 @@ int main()
     *vc++ = *vb;
   inplace_merge(C.begin(), vm, C.end());
   print_all(C);
-  list<string> D = {"Kruskal", "Prim"};
-  list<string> E = {"Dijkstra", "Floyd", "Warshall"};
+  list<string> D {"Kruskal", "Prim"};
+  list<string> E {"Dijkstra", "Floyd", "Warshall"};
   auto ld = D.begin();
   auto le = E.begin();
   while (ld != D.end() && le != E.end())

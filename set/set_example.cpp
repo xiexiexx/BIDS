@@ -5,7 +5,7 @@ using namespace std;
 
 int main()
 {
-  set<int> S = {3, 2, 1, 4, 5};
+  set<int> S {3, 2, 1, 4, 5};
 
   // 插入.
   S.insert(1);

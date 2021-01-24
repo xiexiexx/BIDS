@@ -33,7 +33,7 @@ IR upper(const T& key, IR left, IR right)
 
 int main()
 {
-  vector<int> V = {1, 2, 2, 2, 3};
+  vector<int> V {1, 2, 2, 2, 3};
   cout << lower(2, V.begin(), V.end()) - V.begin() << endl;
   cout << upper(2, V.begin(), V.end()) - V.begin() << endl;
   return 0;

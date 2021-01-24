@@ -6,7 +6,7 @@ using namespace std;
 
 int main()
 {
-  vector<double> V = {0.8, 0.3, 0.6, 0.5, 0.4, 0.2, 0.1, 0.9, 0.0, 0.7};
+  vector<double> V {0.8, 0.3, 0.6, 0.5, 0.4, 0.2, 0.1, 0.9, 0.0, 0.7};
   // e为每个桶中期望元素个数, 理论值取1, 但一般会稍微取大一点.
   const size_t e = 1;
   size_t m = V.size() / e;      // 桶的个数.

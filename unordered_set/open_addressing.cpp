@@ -86,7 +86,7 @@ void rehashing(vector<pnode<T>>& H)
 
 int main()
 {
-  vector<int> V = {-7, 4, 3, -6, 5, 4, 22, 71, 42, -96, 81, 12, 105};
+  vector<int> V {-7, 4, 3, -6, 5, 4, 22, 71, 42, -96, 81, 12, 105};
   vector<pnode<int>> H(2 * V.size());
   fill_blanks(H);
   for (const auto& x : V)

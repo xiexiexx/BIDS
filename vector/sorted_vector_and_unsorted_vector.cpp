@@ -17,7 +17,7 @@ int main()
   int key;
 
   // 有序向量.
-  vector<int> SV = {1, 3, 6, 6, 8, 9};
+  vector<int> SV {1, 3, 6, 6, 8, 9};
   // 查找元素.
   cin >> key;
   auto iter = lower_bound(SV.begin(), SV.end(), key);
@@ -43,7 +43,7 @@ int main()
   print_all(SV);
 
   // 无序向量.
-  vector<int> USV = {9, 6, 1, 3, 8, 6};
+  vector<int> USV {9, 6, 1, 3, 8, 6};
   // 插入新元素.
   key = 0;
   USV.push_back(key);

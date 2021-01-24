@@ -6,7 +6,7 @@ using namespace std;
 
 int main()
 {
-  list<int> L = {-2, -1, 1, 2};
+  list<int> L {-2, -1, 1, 2};
   auto iter = L.begin();
   while (iter != L.end() && *iter < 0)
     ++iter;
@@ -18,7 +18,7 @@ int main()
       iter = L.erase(iter);
     else
       ++iter;
-  list<int> R = {-5, -4, -3};
+  list<int> R {-5, -4, -3};
   L.splice(L.begin(), R, ++R.begin(), R.end());
   for (const auto& x : L)
     cout << x << endl;

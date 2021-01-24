@@ -26,7 +26,7 @@ void quicksort(IR left, IR right)
 
 int main()
 {
-  vector<int> V = {2, 1, 2, 3, 4, 5, 3, 4, 5};
+  vector<int> V {2, 1, 2, 3, 4, 5, 3, 4, 5};
   srand(time(nullptr));
   quicksort(V.begin(), V.end());
   for (const auto& x : V)

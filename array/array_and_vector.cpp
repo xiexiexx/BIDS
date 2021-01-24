@@ -18,7 +18,7 @@ int main()
   vector<int> V2(n, c);
 
   // 列表初始化.
-  vector<int> V3 = {1, 2, 3, 4, 5};
+  vector<int> V3 {1, 2, 3, 4, 5};
   for (size_t i = 0; i < V3.size(); ++i)
     cout << V3[i] << " ";
   cout << endl;

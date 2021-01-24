@@ -32,14 +32,14 @@ void reverse(snode* header)
 
 int main()
 {
-  vector<snode> V = {{}, {1, NULL}, {2, NULL}, {3, NULL}};
+  vector<snode> V {{}, {1, NULL}, {2, NULL}, {3, NULL}};
   for (size_t i = 0; i + 1 < V.size(); ++i)
     V[i].next = &V[i + 1];
   traverse(&V[0]);
   reverse(&V[0]);
   traverse(&V[0]);
 
-  forward_list<int> FL = {1, 2, 3};
+  forward_list<int> FL {1, 2, 3};
   FL.reverse();
   for (const auto& x : FL)
     cout << x << " ";

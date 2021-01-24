@@ -23,7 +23,7 @@ void merge_sort(IR left, IR right, IR aux)
 
 int main()
 {
-  vector<int> V = {3, 2, 1, 4, 5};
+  vector<int> V {3, 2, 1, 4, 5};
   vector<int> A(V.size());
   merge_sort(V.begin(), V.end(), A.begin());
   for (const auto& x : V)

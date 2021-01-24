@@ -15,7 +15,7 @@ void print_all(const T& S)
 int main()
 {
   // 将向量视为堆.
-  vector<int> V = {2, 3, 1, 5, 4};
+  vector<int> V {2, 3, 1, 5, 4};
   // 直接处理堆中元素.
   auto A = V;
   make_heap(A.begin(), A.end());

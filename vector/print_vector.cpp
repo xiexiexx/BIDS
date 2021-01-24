@@ -7,7 +7,7 @@ using namespace std;
 
 int main()
 {
-  vector<int> V = {2, 0, 2, 1};
+  vector<int> V {2, 0, 2, 1};
 
   // 方案1: 使用下标.
   // 此处size_t尽量不要用int代替.

@@ -6,7 +6,7 @@ using namespace std;
 
 int main()
 {
-  vector<int> V = {2, 1, 3, 4, 5};
+  vector<int> V {2, 1, 3, 4, 5};
   int min = *min_element(V.begin(), V.end());
   auto M = partition(V.begin(), V.end(),
                      [min](const auto& x) { return x < min; });

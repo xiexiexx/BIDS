@@ -6,7 +6,7 @@ using namespace std;
 
 int main()
 {
-  set<int> S = {3, 2, 1, 4, 5};
+  set<int> S {3, 2, 1, 4, 5};
   int k;
   cin >> k;
   if (k < 1 || k > S.size())

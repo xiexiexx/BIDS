@@ -22,7 +22,7 @@ void quicksort(IR left, IR right)
 
 int main()
 {
-  vector<int> V = {2, 1, 3, 4, 5};
+  vector<int> V {2, 1, 3, 4, 5};
   quicksort(V.begin(), V.end());
   for (const auto& x : V)
     cout << x << ' ';

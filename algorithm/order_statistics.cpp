@@ -34,7 +34,7 @@ void quickselect(IR left, IR right, size_t k)
 
 int main()
 {
-  vector<int> V = {5, 4, 3, 2, 1, 6, 7, 9, 0};
+  vector<int> V {5, 4, 3, 2, 1, 6, 7, 9, 0};
   vector<int> C(V.begin(), V.end());
   size_t k;
   cin >> k;

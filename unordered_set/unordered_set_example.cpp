@@ -18,7 +18,7 @@ void print_buckets(const unordered_set<T>& S)
 
 int main()
 {
-  vector<int> V = {7, 4, 3, -6, 5, 4, 22, 71, 42, -96, 81, 12, 105};
+  vector<int> V {7, 4, 3, -6, 5, 4, 22, 71, 42, -96, 81, 12, 105};
   unordered_set<int> S(V.begin(), V.end());
   S.insert(23);
   S.erase(5);

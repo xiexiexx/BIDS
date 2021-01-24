@@ -50,8 +50,8 @@ void post_order(node_iterator p)
 
 int main()
 {
-  vector<string> pre_order = {"2", "0", "1", "4", "3", "5", "6", "7"};
-  vector<string> in_order = {"0", "1", "2", "3", "4", "5", "6", "7"};
+  vector<string> pre_order {"2", "0", "1", "4", "3", "5", "6", "7"};
+  vector<string> in_order {"0", "1", "2", "3", "4", "5", "6", "7"};
   size_t n = pre_order.size();
   if (n > 0 && in_order.size() == n)
   {

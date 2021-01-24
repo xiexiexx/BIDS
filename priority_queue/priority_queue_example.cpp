@@ -25,7 +25,7 @@ int main()
     W.pop();
   }
   // 使用向量初始化最大堆的数据.
-  vector<int> V = {2, 3, 1};
+  vector<int> V {2, 3, 1};
   priority_queue<int> PQ(V.begin(), V.end());
   while (PQ.size() > 0)
   {

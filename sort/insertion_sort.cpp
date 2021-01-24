@@ -32,7 +32,7 @@ void insertion_sort_list(list<T>& L)
 
 int main()
 {
-  vector<int> V = {2, 1, 3, 4, 5};
+  vector<int> V {2, 1, 3, 4, 5};
   list<int> L(V.begin(), V.end());
   insertion_sort_vector(V);
   for (const auto& x : V)

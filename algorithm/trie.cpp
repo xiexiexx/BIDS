@@ -11,7 +11,7 @@ struct xnode{
 
 int main()
 {
-  vector<string> V = {"Apple", "X-Men", "42", "Algorithm", "Algorithms"};
+  vector<string> V {"Apple", "X-Men", "42", "Algorithm", "Algorithms"};
   size_t L = 0;
   for (const auto& s : V)
     L += s.size();
@@ -38,7 +38,7 @@ int main()
     p->membership = true;
   }
   // 在trie中查找W中所有字符串, 在屏幕上输出找到的字符串.
-  vector<string> W = {"Algorithm", "Pencil", "42"};
+  vector<string> W {"Algorithm", "Pencil", "42"};
   for (const auto& s : W)
   {
     xnode* p = root;

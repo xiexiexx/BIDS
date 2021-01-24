@@ -21,7 +21,7 @@ void print_all(const T& H)
 
 int main()
 {
-  vector<int> K = {89, -738, 2118, -439, 43289, 89, 67, 251};
+  vector<int> K {89, -738, 2118, -439, 43289, 89, 67, 251};
   size_t u = 2 * K.size();
   vector<set<int>> S(u);
   vector<vector<int>> V(u);

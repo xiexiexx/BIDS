@@ -21,7 +21,7 @@ IR partition_Lomuto(IR left, IR position, IR right)
 
 int main()
 {
-  vector<int> V = {5, 4, 3, 2, 1, 6, 7, 9, 0};
+  vector<int> V {5, 4, 3, 2, 1, 6, 7, 9, 0};
   auto pivot = partition_Lomuto(V.begin(), V.begin() + 2, V.end());
   cout << *pivot << endl;
   for (const auto& x : V)
