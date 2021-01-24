@@ -51,8 +51,10 @@ int main()
   for (const auto& x : C)
     cout << x << endl;
 
-  // 向量的初始化列表.
-  vector<int> D = {4, 2, 1, 5, 3};
+  // 对向量使用(直接)列表初始化.
+  vector<int> D {4, 2, 1, 5, 3};
+  // 更像C语言形式的传统写法是复制列表初始化, 但效率稍低:
+  // vector<int> D = {4, 2, 1, 5, 3};
 
   return 0;
 }
