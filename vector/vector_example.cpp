@@ -8,8 +8,8 @@ int main()
   // 定义一个初始长度为10的向量A, 可用位置数为10.
   vector<int> A(10);
   // 下标i从0到A.size() - 1对A中每个元素赋值i.
-  // i使用size_t型, 若用vector<int>::size_type型更严谨,
-  // 但是大多数编译器上它们的本质相同(可用sizeof测试).
+  // i直接使用size_t型, 对应vector<int>::size_type型, 
+  // 可见C++标准中的allocator定义, 不妨用sizeof测试对比.
   // 向量下标用法与数组相同, 但要注意不必自行统计元素个数,
   // 应保证向量中实有元素个数恒为size(), 即便短暂失效也要快速复位.
   for (size_t i = 0; i < A.size(); ++i)
