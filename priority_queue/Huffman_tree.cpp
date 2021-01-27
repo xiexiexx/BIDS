@@ -50,7 +50,7 @@ int main()
     // 将新的树放入优先级队列并且更新编号index.
     PQ.push(&D[index++]);
   }
-  // 在屏幕上输出每个字母的Huffman编码.
+  // 打印每个字母的Huffman编码.
   queue<hnode*> Q;
   if (!PQ.empty())
     Q.push(PQ.top());
