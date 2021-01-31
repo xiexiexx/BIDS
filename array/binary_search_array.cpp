@@ -2,7 +2,7 @@
 
 using namespace std;
 
-// 输入: key - 待查值; data - 有序数据集(从小到大排列); n - 数据集长度.
+// 输入: key - 待查值; data - 有序数组(从小到大排列); n - 数组长度.
 // 输出: 所找到的位置.
 template <typename T>
 int binary_search_array(const T& key, const T data[], int n)
