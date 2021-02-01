@@ -2,7 +2,10 @@
 #include <vector>
 #include <string>
 
-using namespace std;
+using std::vector;
+using std::string;
+using std::cout;
+using std::endl;
 
 // 线性查找: 数组版本.
 template <typename T>
