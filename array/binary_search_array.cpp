@@ -1,6 +1,6 @@
 #include <iostream>
-
-using namespace std;
+using std::cout;
+using std::endl;
 
 // 输入: key - 待查值; data - 有序数组(从小到大排列); n - 数组长度.
 // 输出: 所找到的位置.
