@@ -3,7 +3,11 @@
 #include <string>
 #include <list>
 
-using namespace std;
+using std::vector;
+using std::string;
+using std::list;
+using std::cout;
+using std::endl;
 
 // 线性查找: 带有哨兵的数组版本. 要求data的长度大于n.
 template <typename T>
@@ -52,7 +56,7 @@ int main()
   cout << linear_search_vector_sentinel(key, V) << endl;
   // 如果要提高效率, 库函数内部其实可用哑结点位置L.end()直接放置哨兵.
   // 另外, 使用这种方式要保证L非空, 否则--L.end()会导致出错.
-  auto iter = linear_search_iterator_sentinel(key, L.begin(), L.end());
+  auto iter = linear_search_iterator_sentinel(key, L.begin(), --L.end());
   if (iter != L.end())
     cout << *iter << endl;
   return 0;
