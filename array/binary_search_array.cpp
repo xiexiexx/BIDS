@@ -1,4 +1,5 @@
 #include <iostream>
+
 using std::cout;
 using std::endl;
 
@@ -9,6 +10,7 @@ int binary_search_array(const T& key, const T data[], int n)
 {
   if (n <= 0)
     return n;
+  // 注意这种闭区间的写法让循环的判断条件有所不同.
   int low = 0;
   int high = n - 1;
   while (low <= high)
@@ -29,7 +31,8 @@ int main()
   int a[5] = {1, 2, 3, 4, 5};
   cout << binary_search_array(2, a, 5) << endl;
   cout << binary_search_array(0, a, 5) << endl;
-  cout << binary_search_array(2, a + 2, 3) << endl;
   cout << binary_search_array(0, a, 0) << endl;
+  // 注意查找的起始位置不同, 更像使用指针. 
+  cout << binary_search_array(2, a + 2, 3) << endl;
   return 0;
 }
