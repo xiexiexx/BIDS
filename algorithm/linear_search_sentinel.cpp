@@ -34,6 +34,7 @@ size_t linear_search_vector_sentinel(const T& key, vector<T>& data)
 }
 
 // 线性查找: 带有哨兵的迭代器方式实现. 要求末尾单独留有空位.
+// 其最佳实现是在双循环链的哑结点位置直接放置哨兵, 不过这得由库函数实现.
 template <typename T, typename IR>
 IR linear_search_iterator_sentinel(const T& key, IR left, IR right)
 {
@@ -48,16 +49,17 @@ int main()
   const int n = 5;
   int A[n + 1] = {3, 2, 1, 4, 5, 0};
   vector<string> V {"RSA", "Apple", "WWW", "While", "X"};
-  string sentinel;
-  list<string> L {"RSA", "Apple", "WWW", "While", "X", sentinel};
   V.reserve(2 * n);
   cout << linear_search_array_sentinel(9, A, n) << endl;
   string key = "Apple";
   cout << linear_search_vector_sentinel(key, V) << endl;
-  // 如果要提高效率, 库函数内部其实可用哑结点位置L.end()直接放置哨兵.
-  // 另外, 使用这种方式要保证L非空, 否则--L.end()会导致出错.
-  auto iter = linear_search_iterator_sentinel(key, L.begin(), --L.end());
-  if (iter != L.end())
+  list<string> L {"RSA", "Apple", "WWW", "While", "X"};
+  // 使用这种方式查找要在前后加上push_back和pop_back语句.
+  L.push_back(key);
+  auto f = --L.end();
+  auto iter = linear_search_iterator_sentinel(key, L.begin(), f);
+  if (iter != f)
     cout << *iter << endl;
+  L.pop_back();
   return 0;
 }
