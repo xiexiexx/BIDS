@@ -32,7 +32,7 @@ int main()
   B.resize(B.size() + 100, 2);
   // 在向量B的尾部加入4.
   B.push_back(4);
-  // 迭代器的另一种用法
+  // 由于向量的特殊性, 迭代器可以使用另一种用法.
   auto iter = B.begin();
   for (size_t i = 0; i < B.size(); ++i)
     *(iter + i) *= 2;
