@@ -24,6 +24,8 @@ int main()
   // 方案3: 基于范围的for循环, 由于不会改动向量, 所以可加const约束.
   for (const auto& x: V)
     cout << x << ' ';
+  // 由于存储的是int元素, 也可以用复制的方式for(auto x : V),
+  // 将V中元素逐个复制到x中再打印, 不适合体积较大的元素.
 
   // 方案4: 使用copy算法.
   // 必须包含algorithm和iterator头文件.
