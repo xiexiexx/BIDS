@@ -1,14 +1,17 @@
 #include <iostream>
 #include <vector>
 
-using namespace std;
+using std::vector;
+using std::cout;
+using std::cin;
+using std::endl;
 
 int main()
 {
   // 定义一个初始长度为10的向量A, 可用位置数为10.
   vector<int> A(10);
   // 下标i从0到A.size() - 1对A中每个元素赋值i.
-  // i直接使用size_t型, 对应vector<int>::size_type型, 
+  // i直接使用size_t型, 对应vector<int>::size_type型,
   // 可见C++标准中的allocator定义, 不妨用sizeof测试对比.
   // 向量下标用法与数组相同, 但要注意不必自行统计元素个数,
   // 应保证向量中实有元素个数恒为size(), 即便短暂失效也要快速复位.
