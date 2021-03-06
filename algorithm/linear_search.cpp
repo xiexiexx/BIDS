@@ -39,8 +39,9 @@ IR linear_search_iterator(const T& key, IR left, IR right)
 
 int main()
 {
-  const int n = 5;
-  int A[n + 1] = {3, 2, 1, 4, 5, 0};
+  const int m = 1000;
+  int n = 5;
+  int A[m] = {3, 2, 1, 4, 5};
   vector<string> V {"RSA", "Apple", "WWW", "While", "X"};
   cout << linear_search_array(1, A, n) << endl;
   string key = "Apple";
