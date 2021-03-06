@@ -1,6 +1,7 @@
 #include <iostream>
 
-using namespace std;
+using std::cout;
+using std::endl;
 
 int main()
 {
@@ -35,7 +36,7 @@ int main()
       M[i][j] = y;
   }
 
-  // 在屏幕上输出.
+  // 打印矩阵.
   for (int i = 0; i < n; ++i)
   {
     for (int j = 0; j < n; ++j)
