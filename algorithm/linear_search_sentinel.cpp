@@ -47,6 +47,7 @@ IR linear_search_iterator_sentinel(const T& key, IR left, IR right)
 int main()
 {
   const int n = 5;
+  // 数组多留出一个位置作为哨兵, 初始化时只给出n个元素的初值.
   int A[n + 1] = {3, 2, 1, 4, 5};
   vector<string> V {"RSA", "Apple", "WWW", "While", "X"};
   V.reserve(2 * n);
