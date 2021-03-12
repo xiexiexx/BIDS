@@ -43,6 +43,7 @@ int main()
 {
   string brackets;
   cin >> brackets;
-  cout << (validator(brackets) ? "匹配" : "不匹配或存在非括号字符") << endl;
+  cout << (validator(brackets) ? "匹配" : "不匹配或存在非括号字符")
+       << endl;
   return 0;
 }
