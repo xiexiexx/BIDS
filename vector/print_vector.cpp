@@ -11,7 +11,7 @@ int main()
 
   // 方案1: 使用下标.
   // 此处size_t尽量不要用int代替.
-  for (size_t i = 0; i < V.size(); i++)
+  for (size_t i = 0; i < V.size(); ++i)
     cout << V[i] << ' ';
 
   // 方案2: 使用vector<int>::const_iterator型常量迭代器citer,
