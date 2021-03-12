@@ -27,15 +27,15 @@ int main()
       {'*', '0', '0', '0', '*', '0', '*'},
       {'*', '*', '*', '*', '*', '*', '*'}
   };
-  const int d = 4;      // 可行方向总数.
+  const int d = 4;            // 可行方向总数.
   // 以下标取值0, 1, 2, 3标记东南西北与当前位置的偏移量.
   const point delta[d] = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
   // 起点与终点的坐标.
   point source = {1, 1};
   point destination = {3, 5};
-  vector<status> P;                         // 搜索时保留路径所用的向量, 可视为栈.
-  P.reserve(m * n);                         // 提前预留容量.
-  P.push_back({source, 0});                 // 初始点设为入口点, 并设定初始方向.
+  vector<status> P;           // 搜索时保留路径所用的向量, 可视为栈.
+  P.reserve(m * n);           // 提前预留容量.
+  P.push_back({source, 0});   // 初始点设为入口点, 并设定初始方向.
   maze[source.x][source.y] = visited;
   while (!P.empty())
     if (P.back().direction < d)
