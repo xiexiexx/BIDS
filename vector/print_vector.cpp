@@ -16,8 +16,7 @@ int main()
 
   // 方案2: 使用vector<int>::const_iterator型常量迭代器citer,
   // 注意常量迭代器只读不写, 相当于加了const约束.
-  // 这里特别以cbegin和cend区别于begin和end,
-  // 从而保证citer是常量迭代器.
+  // 这里特别以cbegin和cend区别于begin和end, 从而保证citer是常量迭代器.
   for (auto citer = V.cbegin(); citer != V.cend(); ++citer)
     cout << *citer << ' ';
 
