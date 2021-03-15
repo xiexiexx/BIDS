@@ -1,7 +1,12 @@
 #include <iostream>
 #include <string>
 #include <stack>
-using namespace std;
+
+using std::string;
+using std::stack;
+using std::cin;
+using std::cout;
+using std::endl;
 
 bool validator(const string& brackets)
 {
