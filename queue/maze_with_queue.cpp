@@ -1,7 +1,11 @@
 #include <iostream>
 #include <queue>
 #include <vector>
-using namespace std;
+
+using std::queue;
+using std::vector;
+using std::cout;
+using std::endl;
 
 // 为方便讲解, 我们不定义point的相等(==)和不相等(!=)运算符.
 struct point {
