@@ -28,11 +28,11 @@ int binary_search_array(const T& key, const T data[], int n)
 
 int main()
 {
-  int a[5] = {1, 2, 3, 4, 5};
-  cout << binary_search_array(2, a, 5) << endl;
-  cout << binary_search_array(0, a, 5) << endl;
-  cout << binary_search_array(0, a, 0) << endl;
-  // 注意查找的起始位置不同, 更像使用指针. 
-  cout << binary_search_array(2, a + 2, 3) << endl;
+  int A[5] = {1, 2, 3, 4, 5};
+  cout << binary_search_array(2, A, 5) << endl;
+  cout << binary_search_array(0, A, 5) << endl;
+  cout << binary_search_array(0, A, 0) << endl;
+  // 注意查找的起始位置不同, 更像使用指针.
+  cout << binary_search_array(2, A + 2, 3) << endl;
   return 0;
 }
