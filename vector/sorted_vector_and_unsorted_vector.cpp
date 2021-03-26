@@ -43,22 +43,22 @@ int main()
   print_all(SV);
 
   // 无序向量.
-  vector<int> USV {9, 6, 1, 3, 8, 6};
+  vector<int> UV {9, 6, 1, 3, 8, 6};
   // 插入新元素.
   key = 0;
-  USV.push_back(key);
+  UV.push_back(key);
   // 删除重复元素的最后一个. 思考: 如何删除第一个?
   key = 6;
   // 注意这里得使用逆向迭代器, 而不能使用正向迭代器iter.
-  auto riter = find(USV.rbegin(), USV.rend(), key);
+  auto riter = find(UV.rbegin(), UV.rend(), key);
   // 如果存在则删除.
-  if (riter != USV.rend())
+  if (riter != UV.rend())
   {
-    *riter = USV.back();
-    USV.pop_back();
+    *riter = UV.back();
+    UV.pop_back();
   }
   // 打印.
-  print_all(USV);
+  print_all(UV);
 
   return 0;
 }
