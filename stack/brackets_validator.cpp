@@ -10,7 +10,7 @@ using std::endl;
 
 bool validator(const string& brackets)
 {
-  stack<char> S;
+  stack<char> S;  // 也可用字符串存储.
   for (size_t i = 0; i < brackets.size(); ++i)
     switch (brackets[i])
     {
