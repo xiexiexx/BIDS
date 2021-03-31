@@ -1,7 +1,10 @@
 #include <iostream>
 #include <vector>
 
-using namespace std;
+using std::vector;
+using std::cout;
+using std::endl;
+using std::less;
 
 template <typename T>
 void print_heap(const vector<T>& H)
