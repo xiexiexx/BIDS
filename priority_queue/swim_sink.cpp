@@ -6,6 +6,7 @@ using std::cout;
 using std::endl;
 using std::less;
 
+// 打印堆中元素.
 template <typename T>
 void print_heap(const vector<T>& H)
 {
@@ -15,8 +16,9 @@ void print_heap(const vector<T>& H)
   cout << endl;
 }
 
-template <typename T, typename compare>
-void swim(vector<T>& H, size_t i, compare cmp)
+// 上浮操作, 默认使用less<T>(), 也可自行定义.
+template <typename T, typename compare = less<T>>
+void swim(vector<T>& H, size_t i, compare cmp = compare())
 {
   // 在H[0]处设置哨兵以终止循环, 并保存初始结点i处的数据.
   // 如果H[0]大于i位置的父亲结点值H[i / 2]则不断让i位置上浮,
@@ -27,14 +29,9 @@ void swim(vector<T>& H, size_t i, compare cmp)
   H[i] = H[0];
 }
 
-template <typename T>
-void swim(vector<T>& H, size_t i)
-{
-  swim(H, i, less<T>());
-}
-
-template <typename T, typename compare>
-void sink(vector<T>& H, size_t i, compare cmp)
+// 下沉操作, 默认使用less<T>(), 也可自行定义.
+template <typename T, typename compare = less<T>>
+void sink(vector<T>& H, size_t i, compare cmp = compare())
 {
   // 暂存H[i]数据, 注意后续操作是和H[0]比较.
   H[0] = H[i];
@@ -70,16 +67,13 @@ void sink(vector<T>& H, size_t i, compare cmp)
   H[i] = H[0];
 }
 
-template <typename T>
-void sink(vector<T>& H, size_t i)
-{
-  sink(H, i, less<T>());
-}
-
 int main()
 {
   int sentinal;
+  // 给出最大堆H, 注意堆顶元素是H[1].
   vector<int> H {sentinal, 9, 8, 7, 5, 6, 4, 3, 1, 0, 2};
+  // 改变堆中若干元素的值并调整, 特别注意堆顶和堆尾.
+  // 元素值增加则进行上浮操作, 元素值减少则进行下沉操作.
   int d = 10;
   H[5] += d;
   swim(H, 5);
