@@ -20,12 +20,12 @@ void print_heap(const vector<T>& H)
 template <typename T, typename compare = less<T>>
 void swim(vector<T>& H, size_t i, compare cmp = compare())
 {
-  // 在H[0]处设置哨兵以终止循环, 并保存初始结点i处的数据.
-  // 如果H[0]大于i位置的父亲结点值H[i / 2]则不断让i位置上浮,
-  // 但初始结点处的数据暂不处理, 其值仍存于H[0].
+  // 在H[0]处设置哨兵以终止循环, 并保存结点i的初始数据(记为x).
+  // 如果H[0]大于结点i的父亲结点数据值H[i / 2]则不断让i的位置上浮,
+  // 但是初始数据x暂不处理, 仍存于H[0].
   for (H[0] = H[i]; cmp(H[i / 2], H[0]); i /= 2)
     H[i] = H[i / 2];
-  // 将初始结点处的数据存于上浮操作最终停留的位置.
+  // 将初始数据x存于上浮操作最终停留的位置.
   H[i] = H[0];
 }
 
@@ -33,7 +33,7 @@ void swim(vector<T>& H, size_t i, compare cmp = compare())
 template <typename T, typename compare = less<T>>
 void sink(vector<T>& H, size_t i, compare cmp = compare())
 {
-  // 暂存H[i]数据, 注意后续操作是和H[0]比较.
+  // 暂存结点i的初始数据(记为x), 注意后续操作是和H[0]比较.
   H[0] = H[i];
   // 结点的右孩子编号.
   size_t right = 2 * i + 1;
@@ -63,15 +63,14 @@ void sink(vector<T>& H, size_t i, compare cmp = compare())
     H[i] = H[right - 1];
     i = right - 1;
   }
-  // 将初始结点处的数据存于下沉操作最终停留的位置.
+  // 将初始数据x存于下沉操作最终停留的位置.
   H[i] = H[0];
 }
 
 int main()
 {
-  int sentinal;
-  // 给出最大堆H, 注意堆顶元素是H[1].
-  vector<int> H {sentinal, 9, 8, 7, 5, 6, 4, 3, 1, 0, 2};
+  // 给出最大堆H, 注意堆顶元素是H[1], H[0]用作哨兵.
+  vector<int> H {{}, 9, 8, 7, 5, 6, 4, 3, 1, 0, 2};
   // 改变堆中若干元素的值并调整, 特别注意堆顶和堆尾.
   // 元素值增加则进行上浮操作, 元素值减少则进行下沉操作.
   int d = 10;
@@ -87,5 +86,6 @@ int main()
   H[1] -= d;
   sink(H, 1);
   print_heap(H);
+  // 如果是最小堆, 上浮和下沉要补上参数std::greater<int>().
   return 0;
 }
