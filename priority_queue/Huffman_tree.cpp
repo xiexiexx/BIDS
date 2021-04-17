@@ -1,5 +1,4 @@
 #include <iostream>
-#include <string>
 #include <vector>
 #include <queue>
 
@@ -7,7 +6,7 @@ using namespace std;
 
 // Huffman树结点定义
 struct hnode {
-  string code;
+  vector<bool> code;
   double weight;
   // 设原始符号共n个, 以编号number区分原始符号结点(0到n - 1)和编码过程中出现的新结点.
   size_t number;
@@ -32,7 +31,7 @@ int main()
   // D中初始设定n棵仅有根结点的树, 并放入优先级队列PQ中.
   for (index = 0; index < P.size(); ++index)
   {
-    D[index] = {"", P[index], index, NULL, NULL};
+    D[index] = {{}, P[index], index, NULL, NULL};
     PQ.push(&D[index]);
   }
   // 循环处理以构建Huffman树.
@@ -60,16 +59,23 @@ int main()
     if (current->left != NULL)
     {
       Q.push(current->left);
-      current->left->code = current->code + "0";
+      current->left->code = current->code;
+      current->left->code.push_back(false);
     }
     if (current->right != NULL)
     {
       Q.push(current->right);
-      current->right->code = current->code + "1";
+      current->right->code = current->code;
+      current->right->code.push_back(true);
     }
     Q.pop();
   }
   for (size_t i = 0; i < P.size(); ++i)
-    cout << (char)('A' + i) << "->" << D[i].code << endl;
+  {
+    cout << (char)('A' + i) << "->";
+    for (auto x : D[i].code)
+      cout << (x ? '1' : '0');
+    cout << ' ' << endl;
+  }
   return 0;
 }
