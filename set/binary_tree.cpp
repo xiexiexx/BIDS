@@ -4,11 +4,11 @@
 using namespace std;
 
 template <typename T>
-struct tnode {
+struct bnode {
   T data;
-  tnode<T>* left;
-  tnode<T>* right;
-  tnode<T>* parent;
+  bnode<T>* left;
+  bnode<T>* right;
+  bnode<T>* parent;
 };
 
 template <typename IR>
@@ -137,7 +137,7 @@ int main()
   if (n < 1)
     return 0;
 
-  vector<tnode<size_t>> tree(n);
+  vector<bnode<size_t>> tree(n);
   for (size_t i = 0; i < tree.size(); ++i)
     tree[i].data = i;
   alpha = 0.3;

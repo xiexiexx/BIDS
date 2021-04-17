@@ -5,10 +5,10 @@
 using namespace std;
 
 template <typename T>
-struct tnode {
+struct bnode {
   T data;
-  tnode<T>* left;
-  tnode<T>* right;
+  bnode<T>* left;
+  bnode<T>* right;
 };
 
 // 使用本函数之前得确保n > 0.
@@ -55,7 +55,7 @@ int main()
   size_t n = pre_order.size();
   if (n > 0 && in_order.size() == n)
   {
-    vector<tnode<string>> tree(n);
+    vector<bnode<string>> tree(n);
     if (pre_in_build(&pre_order[0], &in_order[0], &tree[0], n))
       post_order(&tree[0]);
     else
