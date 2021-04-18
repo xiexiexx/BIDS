@@ -16,7 +16,7 @@ int linear_search_array_sentinel(const T& key, T data[], int n)
   data[n] = key;
   int i = 0;
   while (data[i] != key)
-      ++i;
+    ++i;
   return i;
 }
 
@@ -28,7 +28,7 @@ size_t linear_search_vector_sentinel(const T& key, vector<T>& data)
   data.push_back(key);
   size_t i = 0;
   while (data[i] != key)
-      ++i;
+    ++i;
   // 注意得恢复向量的原有长度.
   data.pop_back();
   return i;
