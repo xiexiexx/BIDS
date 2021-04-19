@@ -48,6 +48,7 @@ int main()
       iter = S.erase(iter);
     else
       ++iter;
+  // 利用基于范围的for循环打印S中所有元素.
   for (const auto& x : S)
     cout << x << ' ';
   cout << endl;
