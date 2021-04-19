@@ -7,7 +7,7 @@ using std::endl;
 using std::vector;
 using std::unordered_set;
 
-// 注意到本例中两次打印迭代器区间中的所有元素, 不妨实现print_all函数.
+// 注意到本例中多次打印元素, 不妨实现基于迭代器区间的print_all函数.
 // 如果换成print_all调用可让代码更简洁, 具体修改作为练习.
 template <typename IR>
 void print_all(IR left, IR right)
