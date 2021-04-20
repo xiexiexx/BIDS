@@ -3,7 +3,10 @@
 #include <algorithm>
 #include <iterator>
 
-using namespace std;
+using std::vector;
+using std::cout;
+using std::copy;
+using std::ostream_iterator;
 
 int main()
 {
@@ -29,7 +32,7 @@ int main()
   // 方案4: 使用copy算法.
   // 必须包含algorithm和iterator头文件.
   // 另外空格要用字符串形式" "而不能用字符形式' '.
-  copy (V.cbegin(), V.cend(), ostream_iterator<int>(cout, " "));
+  copy(V.cbegin(), V.cend(), ostream_iterator<int>(cout, " "));
 
   return 0;
 }
