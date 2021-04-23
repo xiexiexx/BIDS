@@ -1,7 +1,12 @@
 #include <iostream>
 #include <vector>
 #include <queue>
-using namespace std;
+
+using std::cout;
+using std::endl;
+using std::cin;
+using std::vector;
+using std::queue;
 
 template <typename T>
 struct bnode {
@@ -11,28 +16,38 @@ struct bnode {
   bnode<T>* parent;
 };
 
+// 处理结点数据. 这里使用打印功能, 也可换为其他操作.
+template <typename IR>
+void node_processing(IR p)
+{
+  cout << p->data << ' ';
+}
+
+// 前序遍历二叉树.
 template <typename IR>
 void pre_order(IR p)
 {
   if (p != NULL)
   {
-    cout << p->data << ' ';
+    node_processing(p);
     pre_order(p->left);
     pre_order(p->right);
   }
 }
 
+// 中序遍历二叉树.
 template <typename IR>
 void in_order(IR p)
 {
   if (p != NULL)
   {
     in_order(p->left);
-    cout << p->data << ' ';
+    node_processing(p);
     in_order(p->right);
   }
 }
 
+// 后序遍历二叉树.
 template <typename IR>
 void post_order(IR p)
 {
@@ -40,10 +55,11 @@ void post_order(IR p)
   {
     post_order(p->left);
     post_order(p->right);
-    cout << p->data << ' ';
+    node_processing(p);
   }
 }
 
+// 层次遍历二叉树.
 template <typename IR>
 void level_order(IR p)
 {
@@ -52,27 +68,35 @@ void level_order(IR p)
     Q.push(p);
   while (!Q.empty())
   {
+    // 取出队首元素(结点指针).
     IR f = Q.front();
-    cout << f->data << ' ';
+    Q.pop();
+    node_processing(f);
+    // 若有左孩子则将其入队.
     if (f->left != NULL)
       Q.push(f->left);
+    // 若有右孩子则将其入队.
     if (f->right != NULL)
       Q.push(f->right);
-    Q.pop();
   }
 }
 
+// 为方便起见, 将弯折率定义为全局变量.
 double alpha;
 
+// 从start位置开始向后取n个结点以弯折形式生成二叉树.
 template <typename IR>
 IR tree_generation(IR start, size_t n)
 {
   if (n < 1)
     return NULL;
+  // 计算根结点所在位置.
   size_t c = (n - 1) * alpha;
   IR root = start + c;
+  // 分别生成左右子树的根结点指针.
   IR left_subtree = tree_generation(start, c);
   IR right_subtree = tree_generation(start + c + 1, n - 1 - c);
+  // 设定相关指针值.
   root->left = left_subtree;
   root->right = right_subtree;
   if (left_subtree != NULL)
@@ -82,51 +106,57 @@ IR tree_generation(IR start, size_t n)
   return root;
 }
 
+// 若p指向非空二叉树的根结点, 寻找该树中的最左结点.
 template <typename IR>
 IR left_most(IR p)
 {
+  if (p == NULL)
+    return NULL;
   while (p->left != NULL)
     p = p->left;
   return p;
 }
 
+// 若p指向非空二叉树的根结点, 寻找该树中的最右结点.
 template <typename IR>
 IR right_most(IR p)
 {
+  if (p == NULL)
+    return NULL;
   while (p->right != NULL)
     p = p->right;
   return p;
 }
 
+// 若p指向非空二叉树中的某个结点x, 返回中序遍历意义下x的下一结点位置.
 template <typename IR>
 IR next_position(IR p)
 {
   if (p->right != NULL)
     return left_most(p->right);
-  IR last = p;
-  while (p != NULL)
+  // 以last保留p的原有位置并判断其关系.
+  IR last;
+  do
   {
-    if (last == p->left)
-      return p;
     last = p;
     p = p->parent;
-  }
+  } while (p != NULL && last != p->left);
   return p;
 }
 
+// 若p指向非空二叉树中的某个结点x, 返回中序遍历意义下x的上一结点位置.
 template <typename IR>
 IR prev_position(IR p)
 {
   if (p->left != NULL)
     return right_most(p->left);
-  IR last = p;
-  while (p != NULL)
+  // 以last保留p的原有位置并判断其关系.
+  IR last;
+  do
   {
-    if (last == p->right)
-      return p;
     last = p;
     p = p->parent;
-  }
+  } while (p != NULL && last != p->right);
   return p;
 }
 
@@ -136,14 +166,14 @@ int main()
   cin >> n;
   if (n < 1)
     return 0;
-
+  // 将树的所有结点置于向量tree之中.
   vector<bnode<size_t>> tree(n);
   for (size_t i = 0; i < tree.size(); ++i)
     tree[i].data = i;
   alpha = 0.3;
   auto root = tree_generation(&tree[0], tree.size());
   root->parent = NULL;
-
+  // 遍历二叉树.
   pre_order(root);
   cout << endl;
   in_order(root);
@@ -152,13 +182,12 @@ int main()
   cout << endl;
   level_order(root);
   cout << endl;
-
+  // 按照中序遍历的次序, 以迭代形式访问整棵树.
   for (auto p = left_most(root); p != NULL; p = next_position(p))
-    cout << p->data << ' ';
+    node_processing(p);
   cout << endl;
   for (auto p = right_most(root); p != NULL; p = prev_position(p))
-    cout << p->data << ' ';
+    node_processing(p);
   cout << endl;
-
   return 0;
 }
