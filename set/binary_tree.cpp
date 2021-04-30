@@ -16,7 +16,7 @@ struct bnode {
   bnode<T>* parent;
 };
 
-// 处理结点数据. 这里使用打印功能, 也可换为其他操作.
+// 访问并处理结点数据(例如打印).
 template <typename IR>
 void visit(IR p)
 {
