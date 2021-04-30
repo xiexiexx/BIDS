@@ -18,7 +18,7 @@ struct bnode {
 
 // 处理结点数据. 这里使用打印功能, 也可换为其他操作.
 template <typename IR>
-void node_processing(IR p)
+void visit(IR p)
 {
   cout << p->data << ' ';
 }
@@ -29,7 +29,7 @@ void pre_order(IR p)
 {
   if (p != NULL)
   {
-    node_processing(p);
+    visit(p);
     pre_order(p->left);
     pre_order(p->right);
   }
@@ -42,7 +42,7 @@ void in_order(IR p)
   if (p != NULL)
   {
     in_order(p->left);
-    node_processing(p);
+    visit(p);
     in_order(p->right);
   }
 }
@@ -55,7 +55,7 @@ void post_order(IR p)
   {
     post_order(p->left);
     post_order(p->right);
-    node_processing(p);
+    visit(p);
   }
 }
 
@@ -71,7 +71,7 @@ void level_order(IR p)
     // 取出队首元素(结点指针).
     IR f = Q.front();
     Q.pop();
-    node_processing(f);
+    visit(f);
     // 若有左孩子则将其入队.
     if (f->left != NULL)
       Q.push(f->left);
@@ -184,10 +184,10 @@ int main()
   cout << endl;
   // 按照中序遍历的次序, 以迭代形式访问整棵树.
   for (auto p = left_most(root); p != NULL; p = next_position(p))
-    node_processing(p);
+    visit(p);
   cout << endl;
   for (auto p = right_most(root); p != NULL; p = prev_position(p))
-    node_processing(p);
+    visit(p);
   cout << endl;
   return 0;
 }
