@@ -1,12 +1,15 @@
-# “极简数据结构”视频
-
-课程地址：
-
-[https://study.163.com/course/introduction/1209171880.htm?share=2&shareId=480000001892574](https://study.163.com/course/introduction/1209171880.htm?share=2&shareId=480000001892574)
+# “极简数据结构”
 
 A Brief Introduction to Data Structures
 
 :pencil2: 谢勰 \(微博/微信公众号: 算法时空\)
+
+所有代码均为单个源文件, 便于学习现代C++中的数据结构和算法.
+
+可直接阅读程序学习, 也可配以课程视频: 
+
+[https://study.163.com/course/introduction/1209171880.htm?share=2&shareId=480000001892574](https://study.163.com/course/introduction/1209171880.htm?share=2&shareId=480000001892574)
+
 
 * **预备知识**
 * **第1章：语言基础**
