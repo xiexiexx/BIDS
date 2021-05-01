@@ -4,9 +4,9 @@ A Brief Introduction to Data Structures
 
 :pencil2: 谢勰 \(微博/微信公众号: 算法时空\)
 
-所有代码均为单个源文件, 便于学习现代C++中的数据结构和算法.
+简洁明快地讲解现代C++中的数据结构和算法。所有代码均为单个源文件，并按STL分类于不同的目录。
 
-可直接阅读程序学习, 也可配以课程视频: 
+可直接阅读程序，也可配合课程视频学习：
 
 [https://study.163.com/course/introduction/1209171880.htm?share=2&shareId=480000001892574](https://study.163.com/course/introduction/1209171880.htm?share=2&shareId=480000001892574)
 
