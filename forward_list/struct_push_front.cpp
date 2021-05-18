@@ -25,6 +25,7 @@ int main()
   const int m = 16;
   forward_list<xnode<m>> FL;
   clock_t start = clock();
+  // 实际中应优先选用emplace_front函数.
   for (size_t i = 0; i < n; ++i)
     FL.push_front(xnode<m>(i));
   clock_t end = clock();
