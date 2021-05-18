@@ -25,6 +25,7 @@ int main()
   const int m = 16;
   vector<xnode<m>> V;
   clock_t start = clock();
+  // 实际中应优先选用emplace_back函数.
   for (size_t i = 0; i < n; ++i)
     V.push_back(xnode<m>(i));
   clock_t end = clock();
