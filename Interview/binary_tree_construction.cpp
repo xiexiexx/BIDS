@@ -67,14 +67,17 @@ bnode<T>* scan_binary_tree_construction(vector<pair<size_t, T>>& D,
   size_t c = 1;
   while (c < D.size())
   {
+    // 让p移动到合适的位置.
     while (D[p].first < D[c].first / 2)
       ++p;
+    // 如果p不符合要求则返回空指针.
+    if (D[p].first != D[c].first / 2)
+      return NULL;
+    // 这种方案可推广到m叉树, 可用循环一次考虑完所有孩子.
     if (2 * D[p].first == D[c].first)
       R[p].left = &R[c++];
-    else if (2 * D[p].first + 1 == D[c].first)
+    if (2 * D[p].first + 1 == D[c].first)
       R[p].right = &R[c++];
-    else
-      return NULL;
     R[c].data = D[c].second;
   }
   return &R[0];
