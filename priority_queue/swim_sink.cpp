@@ -6,11 +6,10 @@ using std::cout;
 using std::endl;
 using std::less;
 
-// 打印堆中元素.
+// 打印堆中元素, 注意下标从1开始(基于二叉树结点编号规则).
 template <typename T>
 void print_heap(const vector<T>& H)
 {
-  // 不考虑哨兵位置H[0].
   for (size_t i = 1; i < H.size(); ++i)
     cout << H[i] << ' ';
   cout << endl;
