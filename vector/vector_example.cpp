@@ -40,7 +40,7 @@ int main()
   for (size_t i = 0; i < B.size(); ++i)
     *(iter + i) *= 2;
   // 若向量B不为空, 则持续打印其尾部元素并删除之.
-  while(!B.empty())
+  while (!B.empty())
   {
     cout << B.back() << endl; // 打印向量B的末尾元素
     B.pop_back();             // 删除向量B的末尾元素
