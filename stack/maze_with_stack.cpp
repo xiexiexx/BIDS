@@ -47,25 +47,29 @@ int main()
   P.reserve(m * n);
   // 初始点设为入口点, 并设定初始方向.
   P.push_back({source, 0});
-  maze[source.x][source.y] = visited;
-  while (!P.empty())
-    if (P.back().direction < d)
-    {
-      point next = {P.back().pt.x + delta[P.back().direction].x,
-                    P.back().pt.y + delta[P.back().direction].y};
-      // 调整下次将指示的方向.
-      ++P.back().direction;
-      if (maze[next.x][next.y] == unvisited)
+  if (source != destination)
+  {
+    maze[source.x][source.y] = visited;
+    while (!P.empty())
+      if (P.back().direction < d)
       {
-        maze[next.x][next.y] = visited;
-        P.push_back({next, 0});
-        // 放到路径向量后再判断该点是否为终点并及时跳出循环.
-        if (next == destination)
-          break;
+        point next = {P.back().pt.x + delta[P.back().direction].x,
+                      P.back().pt.y + delta[P.back().direction].y};
+        // 调整下次将指示的方向.
+        ++P.back().direction;
+        if (maze[next.x][next.y] == unvisited)
+        {
+          maze[next.x][next.y] = visited;
+          P.push_back({next, 0});
+          // 放到路径向量后再判断该点是否为终点并及时跳出循环.
+          // 这种方案得预先判定起点不得为终点, 否则会出错.
+          if (next == destination)
+            break;
+        }
       }
-    }
-    else
-      P.pop_back();
+      else
+        P.pop_back();
+  }
   for (const auto& c : P)
     cout << c.pt.x << ' ' << c.pt.y << endl;
   return 0;

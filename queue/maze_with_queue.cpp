@@ -33,15 +33,22 @@ int main()
     "*000*0*",
     "*******"
   };
-  const size_t m = maze.size();
-  const size_t n = maze[0].size();
+  size_t m = maze.size();
+  size_t n = maze[0].size();
   const size_t d = 4;      // 可行方向总数.
   // 以下标取值0, 1, 2, 3标记东南西北与当前位置的偏移量.
   const point delta[d] = {{0, 1}, {1, 0}, {0, (size_t) -1}, {(size_t) -1, 0}};
   // 起点与终点的坐标.
   point source = {1, 1};
   point destination = {m - 2, n - 2};
-  point parent[m][n];                       // 用于保存父亲所在位置.
+  // 单独处理起点就是终点的情况. 后续如果搜索到的新位置为终点便立刻终止.
+  if (source == destination)
+  {
+    cout << source.x << ' ' << source.y << endl;
+    return 0;
+  }
+  // parent用于保存父亲所在位置. 使用二维向量初始化.
+  vector<vector<point>> parent(m, vector<point>(n));
   queue<status> Q;                          // 搜索时所用队列.
   vector<point> P;                          // 保存最终路径.
   Q.push({destination, 0});                 // 初始点设为出口点并指定初始层次.
